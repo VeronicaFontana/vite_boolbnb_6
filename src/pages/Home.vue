@@ -1,6 +1,6 @@
 <script>
+import Card from '../components/partials/Card.vue';
 import Jumbotron from '../components/partials/Jumbotron.vue';
-
 
   export default {
   name:'Home',
@@ -8,7 +8,8 @@ import Jumbotron from '../components/partials/Jumbotron.vue';
     return{}
   },
   components:{
-    Jumbotron
+    Jumbotron,
+    Card
   },
   methods:{},
   mounted(){},
@@ -19,6 +20,7 @@ import Jumbotron from '../components/partials/Jumbotron.vue';
 
 <template>
   <Jumbotron />
+  <Card />
 </template>
 
 
