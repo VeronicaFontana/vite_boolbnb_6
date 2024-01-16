@@ -1,6 +1,9 @@
 <script>
   export default {
   name:'Card',
+  props: {
+    apartment: Object
+  },
   data(){
     return{}
   },
@@ -21,7 +24,7 @@
     </div>
     <div class="col-md-8">
       <div class="card-body">
-        <h5 class="card-title">Nome</h5>
+        <h5 class="card-title">{{apartment.title}}</h5>
         <p class="card-text">Descrizione</p>
       </div>
     </div>
