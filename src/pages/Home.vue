@@ -1,5 +1,5 @@
 <script>
-import Card from '../components/partials/Card.vue';
+import SponsoredCards from '../components/SponsoredCards.vue';
 import Jumbotron from '../components/partials/Jumbotron.vue';
 
   export default {
@@ -9,7 +9,7 @@ import Jumbotron from '../components/partials/Jumbotron.vue';
   },
   components:{
     Jumbotron,
-    Card
+    SponsoredCards
   },
   methods:{},
   mounted(){},
@@ -20,7 +20,7 @@ import Jumbotron from '../components/partials/Jumbotron.vue';
 
 <template>
   <Jumbotron />
-  <Card />
+  <SponsoredCards />
 </template>
 
 
