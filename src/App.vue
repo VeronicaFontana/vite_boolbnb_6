@@ -1,4 +1,6 @@
 <script>
+import Header from './components/partials/Header.vue'
+
 
 export default{
   name: "App",
@@ -6,12 +8,16 @@ export default{
     return{
 
     }
+  },
+  components:{
+    Header
   }
 }
 
 </script>
 
 <template>
+  <Header />
 <RouterView />
 </template>
 
