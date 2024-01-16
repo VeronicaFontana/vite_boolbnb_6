@@ -1,10 +1,15 @@
 <script>
+import Jumbotron from '../components/partials/Jumbotron.vue';
+
+
   export default {
   name:'Home',
   data(){
     return{}
   },
-  components:{},
+  components:{
+    Jumbotron
+  },
   methods:{},
   mounted(){},
   computed:{}
@@ -13,7 +18,7 @@
 
 
 <template>
-  <h1 class="text-center">Benvenuti nella Home Page di Ciao Router</h1>
+  <Jumbotron />
 </template>
 
 
