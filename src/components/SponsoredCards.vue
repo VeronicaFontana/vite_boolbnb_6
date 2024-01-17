@@ -46,14 +46,17 @@
 
 <template>
 
-  <div class="border-1 ">
-    <h2>test SponsoredCards</h2>
+  <h2 class="mx-2">Appartamenti in Evidenza</h2>
+  <div class="container_custom border-1 d-flex flex-wrap">
 
     <Card v-for="apartment in store.sponsoredApartments" :key="apartment.id" :apartment="apartment" />
   </div>
 
 </template>
 
-<style>
-
+<style lang="scss" scoped>
+.container_custom{
+  margin: auto;
+  
+}
 </style>

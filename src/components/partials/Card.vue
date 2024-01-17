@@ -17,19 +17,23 @@
 
 
 <template>
-  <div class="card mb-3" style="max-width: 540px;">
-  <div class="row">
-    <div class="col-md-4">
-      <img src="" class="img-fluid rounded-start h-100 object-fit-cover" alt="...">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">{{apartment.title}}</h5>
-        <p class="card-text">Descrizione</p>
-      </div>
-    </div>
+  <div class="card m-3" style="width: 18rem;">
+  <img :src="apartment.image" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{apartment.title}}</h5>
   </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><i class="fa-solid fa-person-shelter"></i> {{ apartment.rooms }}</li>
+    <li class="list-group-item"><i class="fa-solid fa-bed"></i> {{ apartment.beds }}</li>
+    <li class="list-group-item"><i class="fa-solid fa-restroom"></i> {{ apartment.bathrooms }}</li>
+    <li class="list-group-item"><i class="fa-solid fa-ruler-combined"></i> {{ apartment.square_meters }}m²</li>
+  </ul>
+  <div class="card-body">
+    <a href="#" class="card-link">Vai all'appartamento</a>
   </div>
+</div>
+
+
 </template>
 
 
