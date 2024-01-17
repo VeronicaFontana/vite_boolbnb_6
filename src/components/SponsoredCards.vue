@@ -26,7 +26,7 @@
         })
         .then((res) => {
           store.apartments = res.data.apartments;
-          console.log(res.data.apartments);
+          // console.log(res.data.apartments);
         })
         .catch(function (error) {
           // handle error
