@@ -27,6 +27,7 @@
         .then((res) => {
           store.apartments = res.data.apartments;
           // console.log(res.data.apartments);
+          this.store.sponsoredApartments = store.apartments.filter(apartment => apartment.sponsors.length > 0);
         })
         .catch(function (error) {
           // handle error
@@ -48,7 +49,7 @@
   <div class="border-1 ">
     <h2>test SponsoredCards</h2>
 
-    <Card v-for="apartment in store.apartments" :key="apartment.id" :apartment="apartment" />
+    <Card v-for="apartment in store.sponsoredApartments" :key="apartment.id" :apartment="apartment" />
   </div>
 
 </template>

@@ -7,6 +7,7 @@ export const store = reactive({
   apiKey: 'H9LpZxM6CXyvTcM6MQohPzIS3ZH9d3Ke',
   apartments: [],
   addresses: [],
+  sponsoredApartments: []
 
 })
 
