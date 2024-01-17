@@ -31,6 +31,7 @@
 
 .img-box{
   width: 100%;
+  margin-top: 90px;
   height: 600px;
   background-image: url("/public/532101_beautiful-house-hd-wallpapers_1920x1200_h.jpg");
   background-position: center center;
