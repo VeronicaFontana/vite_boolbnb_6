@@ -13,59 +13,66 @@
 
 
 <template>
-<footer>
-
-      <div class="foot d-flex">
-        <ul>
-          <li>Ciao</li>
-        </ul>
-        
+<footer class="">
+  <div class="container">
+    <div class="row">
+      <div class="col-3 one">
+        <i class="fa-brands fa-cc-visa"></i>
+        <i class="fa-brands fa-cc-mastercard"></i>
+        <i class="fa-brands fa-paypal"></i>
+        <i class="fa-brands fa-cc-apple-pay"></i>
+        <i class="fa-solid fa-lock"></i>
       </div>
-      <div class="bottom-foot container d-flex">
-
-        <div class="legal">
-          <h3>Boolando s.r.l.</h3>
-          <div>informazioni legali normativa sulla privacy Diritto di recessi</div>
-          <ul></ul>
-        </div>
-
-        <div class="social">
-          <h5>Trovaci anche su</h5>
-          <a v-for="(item, index) in menuFontAweFooter" :key="index" :href="item.href">
-            <i :class="item.font"></i>
-          </a>
-          
-        </div>
-
+      <div class="col-9 two">
+        <p>BoolB&B.it rispetta lo standard PCI-DSS per i servizi di Prenotazione Alberghiera / Accomodation Reservation - Payment Card Industry Data Security Standard v.3.2, Service Provider Level 2</p>
       </div>
+    </div>
+    <div class="row">
+      <div class="col-9 two">
+        <p>L'accesso o l'utilizzo di questo sito è subordinato all'accettazione dei Termini   del servizio, Informativa sulla Privacy e Cookie Policy
+          Realizzazione:  Classe #105 Team-6 - P.Iva 6516516516
+        </p>
+      </div>
+      <div class="col-3 one">
+        <i class="fa-brands fa-facebook-f"></i>
+        <i class="fa-brands fa-x-twitter"></i>
+        <i class="fa-brands fa-instagram"></i>
+        <i class="fa-brands fa-tiktok"></i>
+        <i class="fa-brands fa-youtube"></i>
+      </div>
+    </div>
+  </div>
+  
 </footer>
 </template>
 
 
 <style lang="scss"  scoped>
 footer{
-  height: 300px;
+  height: 250px;
   width: 100vw;
   background-color: rgb(48, 47, 47);
   color: white;
-  .foot {
-  height: 100px;
-  width: 100%;
-  background-color: rgb(24, 23, 23);
-  margin-top: 60px;
-  align-items: center;
-      .bottom-foot {
-        justify-content: space-between;
-        color: white;
-      }
-  h3,h5 {
-  padding: 15px 0px;
+  .row{
+    padding: 25px 0 25px 0;
+    display: flex;
+    justify-items: center;
+    border-bottom: 1px solid gray;
+    .one{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      justify-content: space-around;
+    // background-color: rgb(172, 70, 70);
+    i{
+      font-size: 1.9rem;
+    }
+    }
+    .two{
+    // background-color: rgb(156, 98, 22);
+    padding-top:10px;
+    }
   }
-  a {
-  padding: 0px 4px;
-  color: white;
-  }
-}
 }
 
 
