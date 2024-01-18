@@ -1,5 +1,6 @@
 <script>
 import Header from '../components/partials/Header.vue';
+import Jumbotron from '../components/partials/Jumbotron.vue'
 import Footer from '../components/partials/Footer.vue';
 
   export default {
@@ -9,6 +10,7 @@ import Footer from '../components/partials/Footer.vue';
   },
   components:{
     Header,
+    Jumbotron,
     Footer
   },
   methods:{},
@@ -19,7 +21,7 @@ import Footer from '../components/partials/Footer.vue';
 
 
 <template>
-  
+  <Header />
   <Jumbotron />
   <Footer />
 </template>
