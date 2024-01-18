@@ -1,6 +1,6 @@
 <script>
   export default {
-  name:'Home',
+  name:'Header',
   data(){
     return{}
   },
@@ -25,6 +25,8 @@
 
       <div class="col-3 justify-content-end">
         <span class="pe-3">Login <i class="fa-solid fa-arrow-right-to-bracket"></i></span>
+        <router-link :to="{name: 'home'}">Home</router-link>
+        <router-link :to="{name: 'AdvanceSearch'}">Search</router-link>
       </div>
     </div>
   </header>
