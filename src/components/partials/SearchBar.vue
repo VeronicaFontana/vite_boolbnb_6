@@ -29,7 +29,7 @@
         if(this.inputSearch.length > 3){
           this.checkInputValue(this.inputSearch);
         }
-      },1500)
+      },1000)
 
     },
   
@@ -110,7 +110,7 @@
         list="address-search-results"
         >
         <datalist id="address-search-results">
-          <option v-for="address in this.mappedResults" :key="address.id" :value="address">{{address.string}}</option>
+          <option v-for="address in this.mappedResults" :key="address.id" :value="address.string">{{address.string}}</option>
         </datalist>
 
       <button class="btn btn-outline-secondary" type="button" id="button-addon2">Cerca</button>
