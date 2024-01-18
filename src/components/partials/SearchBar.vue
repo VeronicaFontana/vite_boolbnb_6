@@ -98,25 +98,36 @@
 
 
 <template>
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Dove vuoi cercare?"
-        aria-label="Dove vuoi cercare?"
-        aria-describedby="button-addon2"
-        @input="checkTimer()"
-        id="input-search"
-        v-model.trim="inputSearch"
-        list="address-search-results"
-        >
-        <datalist id="address-search-results">
-          <option v-for="address in this.mappedResults" :key="address.id" :value="address.string">{{address.string}}</option>
-        </datalist>
+<div class="search-bar-container d-flex justify-content-center  align-items-center input-group mx-auto ">
+  <input
+  type="text"
+  class="form-control"
+  placeholder="Dove vuoi cercare?"
+  aria-label="Dove vuoi cercare?"
+  aria-describedby="button-addon2"
+  @input="checkTimer()"
+  id="input-search"
+  v-model.trim="inputSearch"
+  list="address-search-results"
+  >
+  <datalist id="address-search-results">
+    <option v-for="address in this.mappedResults" :key="address.id" :value="address.string">{{address.string}}</option>
+  </datalist>
 
-      <button class="btn btn-outline-secondary" type="button" id="button-addon2">Cerca</button>
+<button class="btn btn-outline-secondary" type="button" id="button-addon2">Cerca</button>
+</div>
 </template>
 
 
 <style lang="scss"  scoped>
 
+.search-bar-container {
+  width: 100vw;
+  z-index: 9999;
+  height: 90px;
+  #input-search {
+    width: 50%;
+    z-index: 9999;
+  }
+}
 </style>
