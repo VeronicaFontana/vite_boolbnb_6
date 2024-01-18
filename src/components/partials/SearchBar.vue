@@ -1,7 +1,7 @@
 <script>
   import axios from 'axios'; 
   import {store} from '../../data/store.js'
-  import _debounce from 'lodash/debounce';
+
 
 
   export default {
@@ -86,7 +86,7 @@
           <option v-for="address in this.mappedResults" :key="address" :value="address">{{address}}</option>
         </datalist>
 
-      <button class="btn btn-outline-secondary" type="button" id="button-addon2">Cerca</button>
+      <router-link :to="{name: 'AdvanceSearch'}"><button class="btn btn-outline-secondary" type="button" id="button-addon2">Cerca</button></router-link>
 </template>
 
 
