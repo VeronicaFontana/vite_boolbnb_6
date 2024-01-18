@@ -3,7 +3,6 @@
   import {store} from '../../data/store.js'
 
 
-
   export default {
   name:'SearchBar',
   data(){
@@ -11,37 +10,55 @@
       inputSearch: '',
       results: [],
       mappedResults: [],
-      timer:''
+      timer:'',
+      isLoaded: false
     }
   },
   components:{},
   methods:{
 
     checkTimer(){
+      this.mappedResults = [];
+      // this.isLoaded = false;
+
       if(this.timer != ''){
-        clearTimeout(this.timer)
+        clearTimeout(this.timer);
       }
+
       this.timer = setTimeout(()=>{
-        if(this.inputSearch.length > 5){
-            this.checkInputValue();
+        if(this.inputSearch.length > 3){
+          this.checkInputValue(this.inputSearch);
         }
-      },3000)
+      },1500)
+
     },
   
-    checkInputValue() {
-        this.getAddress(this.inputSearch);
-        this.getFFAddress()
+    checkInputValue(inputSearch) {
+
+      this.getAddress(inputSearch);
+      setTimeout(() => {
+
+        this.getFFAddress();
+      }, 500)
+        
     },
 
     getAddress(inputSearch) {
       axios.get(store.addressApiUrl + inputSearch + '.json', {
         params: {
-          key: store.apiKey
+          key: store.apiKey,
+          // limit: 10,
+          // ofs: 0,
+          // entityTypeSet: 'Municipality, CountrySecondarySubdivision'
+          // minFuzzyLevel: 2,
+          typeahead: true,
+          countrySet: 'IT',
         }
       })
       .then(res => {
-        this.results = res.data.results;
-        
+        // this.results = res.data.results; // <----- questo funziona
+        this.results = res.data;
+        console.log('TEST TIPOLOGIA RISULTATO -------', res.data)
         // console.log(res.data.results);
       })
       .catch(function (error) {
@@ -53,19 +70,29 @@
 
     
     getFFAddress() {
-      console.log(this.results)
-      this.mappedResults = this.results.map((el) => {
+      this.isLoaded = false;
+      this.mappedResults = [];
+      this.mappedResults = this.results.results.map((el) => {
         // console.log(el.address.freeformAddress);
-        let element = el.address;
-        let new_address = element.freeformAddress + ', ' + element.countrySubdivisionName;
-
-        return new_address;
+        // let element = el.address;
+        // let new_address = element.freeformAddress + ', ' + element.countrySubdivisionName;
+        let new_address = {
+          string: el.address.freeformAddress + ', ' + el.address.countrySubdivisionName,
+          id: el.id
+        };
+          
+        // this.isLoaded = true;
         
+        return new_address;
+      
       })
+        
     }
   },
   mounted(){},
-  computed:{}
+  computed:{
+    
+  }
   }
   </script>
 
@@ -83,10 +110,10 @@
         list="address-search-results"
         >
         <datalist id="address-search-results">
-          <option v-for="address in this.mappedResults" :key="address" :value="address">{{address}}</option>
+          <option v-for="address in this.mappedResults" :key="address.id" :value="address">{{address.string}}</option>
         </datalist>
 
-      <router-link :to="{name: 'AdvanceSearch'}"><button class="btn btn-outline-secondary" type="button" id="button-addon2">Cerca</button></router-link>
+      <button class="btn btn-outline-secondary" type="button" id="button-addon2">Cerca</button>
 </template>
 
 
