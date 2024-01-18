@@ -41,7 +41,7 @@ header{
   background-color: beige;
   position: fixed;
   top: 0;
-  z-index: 999;
+  z-index: 998;
 
   .col-3, .col-6{
     height: 90px;
