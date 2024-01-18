@@ -1,9 +1,9 @@
 <script>
 import {store} from '../data/store';
 import Header from '../components/partials/Header.vue';
-import SearchBar from '../components/partials/SearchBar.vue'
+import SearchBar from '../components/partials/SearchBar.vue';
 import Footer from '../components/partials/Footer.vue';
-import Results from '../components/Results.vue'
+import Results from '../components/Results.vue';
 
   export default {
   name:'AdvanceSearch',

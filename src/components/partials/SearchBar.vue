@@ -55,19 +55,35 @@
           countrySet: 'IT',
         }
       })
-      .then(res => {
-        // this.results = res.data.results; // <----- questo funziona
-        this.results = res.data;
-        console.log('TEST TIPOLOGIA RISULTATO -------', res.data)
-        // console.log(res.data.results);
-      })
+    .then(res => {
+      this.results = res.data;
+        // this.results.forEach(result =>{
+        // let position = result.position;
+        // store.lonA = position.lon;
+        // store.latA = position.lat;
+    // })
+  })
       .catch(function (error) {
         // handle error
         console.log(error.message);
       })
-
     },
 
+
+    getApiNostra(){
+    axios.get(store.apiNostra,{
+      params:{
+        lonA: store.lonA,
+        latA: store.latA
+      }
+    })
+    .then(res =>{
+      console.log(res.data)
+    })
+  },
+  testFunzione(position){
+    console.log(position);
+  },
     
     getFFAddress() {
       this.isLoaded = false;
@@ -78,7 +94,11 @@
         // let new_address = element.freeformAddress + ', ' + element.countrySubdivisionName;
         let new_address = {
           string: el.address.freeformAddress + ', ' + el.address.countrySubdivisionName,
-          id: el.id
+          id: el.id,
+          position: {
+            lat:el.position.lat,
+            lon:el.position.lon
+          }
         };
           
         // this.isLoaded = true;
@@ -111,10 +131,12 @@
   list="address-search-results"
   >
   <datalist id="address-search-results">
-    <option v-for="address in this.mappedResults" :key="address.id" :value="address.string">{{address.string}}</option>
+    <option v-for="address in this.mappedResults" :key="address.id" @click="testFunzione(address.position)" :value="address.string">{{address.string}}</option>
   </datalist>
-
-<button class="btn btn-outline-secondary" type="button" id="button-addon2">Cerca</button>
+  
+  <form @submit.prevent="getApiNostra()">
+  <button class="btn btn-outline-secondary" type="button" id="button-addon2" @click="getApiNostra()">Cerca</button>
+</form>
 </div>
 </template>
 
