@@ -1,4 +1,5 @@
 <script>
+import {store} from '../data/store';
 import Header from '../components/partials/Header.vue';
 import Jumbotron from '../components/partials/Jumbotron.vue'
 import Footer from '../components/partials/Footer.vue';
@@ -6,14 +7,18 @@ import Footer from '../components/partials/Footer.vue';
   export default {
   name:'AdvanceSearch',
   data(){
-    return{}
+    return{
+      store
+    }
   },
   components:{
     Header,
     Jumbotron,
     Footer
   },
-  methods:{},
+  methods:{
+    
+  },
   mounted(){},
   computed:{}
   }
@@ -22,6 +27,11 @@ import Footer from '../components/partials/Footer.vue';
 
 <template>
   <Header />
-  <Jumbotron />
+  <ul>
+    <li v-for="(result,index) in store.results" :key="index">
+      <p>{{ result.apartment.title }}</p>
+      <p></p>
+    </li>
+  </ul>
   <Footer />
 </template>
