@@ -1,8 +1,9 @@
 <script>
 import {store} from '../data/store';
 import Header from '../components/partials/Header.vue';
-import Jumbotron from '../components/partials/Jumbotron.vue'
+import SearchBar from '../components/partials/SearchBar.vue'
 import Footer from '../components/partials/Footer.vue';
+import Results from '../components/Results.vue'
 
   export default {
   name:'AdvanceSearch',
@@ -13,7 +14,8 @@ import Footer from '../components/partials/Footer.vue';
   },
   components:{
     Header,
-    Jumbotron,
+    SearchBar,
+    Results,
     Footer
   },
   methods:{
@@ -33,5 +35,14 @@ import Footer from '../components/partials/Footer.vue';
       <p></p>
     </li>
   </ul>
+
+  <SearchBar />
+  
+  <Results />
+
   <Footer />
 </template>
+
+<style lang="scss" scoped>
+
+</style>
