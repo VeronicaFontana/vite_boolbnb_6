@@ -75,7 +75,9 @@
       
       axios.get(store.apiNostra + position)
     .then(res =>{
-      console.log(res.data)
+      // console.log(res.data)
+      store.results = res.data
+      // console.log( store.results )
     })
   },
   testFunzione(position){
