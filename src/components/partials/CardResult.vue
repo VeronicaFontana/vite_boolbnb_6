@@ -9,7 +9,13 @@
   },
   components:{
   },
-  methods:{},
+  methods:{
+    isInStorage(imagePath) {
+    // Verifica se l'immagine è nella directory storage/
+    // Puoi personalizzare questa logica a seconda delle tue esigenze
+    return imagePath.startsWith('storage/');
+  }
+  },
   mounted(){},
   computed:{}
   }
@@ -18,10 +24,18 @@
 
 <template>
 <section class="results-box">
-  <div class="card mb-3" style="max-width: 540px;">
+  <div class="card mb-3 " style="max-width: 540px;">
     <div class="row g-0">
       <div class="col-md-4">
-        <img :src="`http://127.0.0.1:8000/storage/`+result.appartamento.image" class="img-fluid rounded-start" alt="...">
+        <img
+            v-if="result.appartamento.image"
+            :src="isInStorage(result.appartamento.image) ? `http://127.0.0.1:8000/storage/${result.appartamento.image}` : `http://127.0.0.1:8000/img/${result.appartamento.image}`"
+            class="img-fluid rounded-start"
+            alt="..."
+          />
+          <!-- <img v-if="(result.appartamento.image)" :src="`http://127.0.0.1:8000/storage/`+result.appartamento.image" class="img-fluid rounded-start" alt="..."> -->
+
+      
       </div>
       <div class="col-md-8">
         <div class="card-body">
@@ -53,5 +67,20 @@
 
 
 <style lang="scss"  scoped>
-
+.results-box{
+  margin: 20px;
+img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+  .row{
+    padding: 0px 0px 9px 12px;
+    .col-3, .col-4{
+      padding: 0;
+      font-size: .6rem;
+      color: grey;
+    }
+  }
+}
 </style>
