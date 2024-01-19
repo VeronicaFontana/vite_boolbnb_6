@@ -13,7 +13,20 @@ import Footer from '../components/partials/Footer.vue';
     SponsoredCards,
     Footer
   },
-  methods:{},
+  methods:{
+    getServices() {
+      axios.get(store.apiUrl, {
+        params: {
+        }
+      })
+      .then((res) => {
+        store.services = res.data.services;
+      })
+      .catch(function (error) {
+        console.log(error.message);
+      })
+    }
+  },
   mounted(){},
   computed:{}
   }
@@ -24,7 +37,6 @@ import Footer from '../components/partials/Footer.vue';
   <Jumbotron />
   <div class="container_custom">
     <SponsoredCards />
-
   </div>
   <Footer />
 </template>
