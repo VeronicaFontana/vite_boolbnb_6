@@ -29,17 +29,8 @@ import Results from '../components/Results.vue';
 
 <template>
   <Header />
-  <ul>
-    <li v-for="(result,index) in store.results" :key="index">
-      <p>{{ result.apartment.title }}</p>
-      <p></p>
-    </li>
-  </ul>
-
   <SearchBar />
-  
   <Results />
-
   <Footer />
 </template>
 

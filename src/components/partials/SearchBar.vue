@@ -29,7 +29,7 @@
         if(this.inputSearch.length > 3){
           this.checkInputValue(this.inputSearch);
         }
-      },1000)
+      },500)
 
     },
   
@@ -153,7 +153,9 @@
   </datalist>
   
   <form>
-    <button class="btn btn-outline-secondary" type="button" id="button-addon2" @click="saveData()">Cerca</button>
+    <router-link :to="{ name:'AdvanceSearch' }" class="btn btn-outline-secondary" type="button" id="button-addon2" @click="saveData()">
+      Cerca
+    </router-link>
   </form>
 </div>
 </template>

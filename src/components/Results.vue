@@ -18,10 +18,51 @@
 
 <template>
 
-  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, quasi voluptas! Atque alias amet sint beatae pariatur, excepturi iste laboriosam accusamus eum, id aspernatur adipisci! Cupiditate adipisci quos fuga, voluptas, repellendus omnis nobis possimus odio amet autem cumque aspernatur, fugit odit totam earum nam saepe necessitatibus rerum obcaecati dignissimos! Iste, repellat. Placeat laudantium cumque, ex autem rem enim ea fugiat aspernatur voluptates ut delectus corrupti, molestiae mollitia quos laborum iste repellat non, praesentium quae vitae officiis qui quidem dolorum fuga. Error, quia vitae aut eveniet incidunt voluptatum id corrupti illum veniam reprehenderit nisi sed at libero aperiam, sint dolorem ipsam sapiente commodi, saepe adipisci officia nam. Aut rerum repellat quas eveniet asperiores laudantium consequuntur. Laborum praesentium voluptatum consequatur fuga dolorum deleniti dolore impedit ut odio sequi? Vitae, ut. A est eos modi error, ipsum fuga adipisci placeat consectetur aliquid eius delectus rem illum. Iusto est deserunt adipisci officiis, cupiditate sunt corporis magni dignissimos debitis sint voluptatibus saepe harum fuga ducimus velit eos tempora aliquam nihil amet. Consequuntur consequatur maiores quas corrupti illo iusto recusandae fugiat eaque in, commodi excepturi! Vitae sapiente ab, vel dolorem nostrum consequatur placeat officiis debitis numquam molestiae iusto dolores odio at, quasi amet! Fugit quaerat molestiae odit qui officia repellendus illum, nemo vero. Vero beatae possimus, consequuntur delectus magni obcaecati neque dolorem commodi ipsa placeat. Doloribus architecto quia tempora dicta ab modi nemo fugiat ipsum? Tempora nostrum libero, sint, voluptatem laudantium velit illum porro natus cum aperiam quis? Vero quia tempore sint a, voluptas deleniti? Dolorum rem doloremque mollitia minima. Ipsa et, voluptas culpa nostrum non reiciendis pariatur velit aspernatur fugit maxime consequuntur animi delectus fuga ab ea dolor iure dolore nihil odit quibusdam reprehenderit. Aspernatur voluptatibus vel, ut odit, quae, porro consectetur illo aliquid voluptas commodi molestiae! Delectus possimus, recusandae nam cum, aspernatur eius qui sint quos, voluptatem saepe ut debitis obcaecati. Nisi sed expedita veritatis deserunt laudantium eum suscipit, obcaecati dolores, ipsa eligendi harum debitis labore saepe pariatur deleniti? Beatae aperiam ea, repudiandae odit impedit ipsum et aliquid, nobis autem accusamus at aspernatur nulla error aut totam sequi atque. Tempore animi eius hic beatae quod. Reiciendis consectetur officiis magni suscipit quia, laborum dolore optio praesentium alias cum nulla excepturi quos, quibusdam veniam nobis provident fuga commodi, rem vitae deserunt ipsam fugit nemo eum! Unde distinctio, facere, dolores sint magnam tempore enim exercitationem nostrum doloribus consequatur dignissimos officia harum qui dolorem libero, assumenda omnis fugiat maxime? Eveniet facilis cumque repellat harum voluptatibus voluptas odit quas, explicabo beatae, deserunt fuga tempore quia alias rerum! Similique in est quaerat voluptates vitae laudantium porro fuga dicta harum consequuntur recusandae nemo eaque repellat quis, iure repudiandae. Reprehenderit nisi laboriosam id similique libero aperiam nulla quisquam modi. Temporibus aut nisi asperiores! Illo a, ipsum sed voluptate iure molestiae praesentium amet similique in ducimus. Consequuntur qui iure optio odio vitae at perferendis corrupti illum aliquid, veritatis hic nesciunt doloribus assumenda deserunt, incidunt sunt ut officiis alias nam architecto odit, provident numquam quis! Omnis quisquam rem, voluptatem inventore porro ducimus accusamus laudantium adipisci consectetur maxime corrupti quidem, dignissimos veniam velit officia molestias voluptas. Tempore officia reiciendis dolorem cumque fuga cupiditate! Perspiciatis minus dignissimos repellat labore ex? Dolorem deserunt soluta suscipit debitis reiciendis sunt molestias aperiam! Velit placeat neque alias vero repellat aut earum accusantium eaque totam natus! Iusto provident laborum ullam officiis ipsam nemo quis porro ad blanditiis libero hic consectetur vero similique harum asperiores est, corrupti recusandae ratione amet molestiae incidunt dolor ut obcaecati? Quam ipsum molestiae praesentium debitis repudiandae voluptates sunt magnam commodi assumenda quae et placeat ratione quod repellat itaque, libero quaerat! A officia vero atque sit, quae quaerat ipsam, voluptate ab dolores maiores error eos beatae id vitae tenetur corrupti esse nihil ipsum fuga illum! Voluptatem aliquid corrupti ratione quibusdam nihil et eligendi error saepe atque cupiditate est, similique quam odio maiores eius quis repudiandae nulla, dolorum deserunt vero architecto optio nemo obcaecati. Debitis ullam, aut iure magni hic labore velit error repellat, odit assumenda corporis. Excepturi perferendis et dolores harum quisquam maxime magni facilis, quis corporis eveniet. Omnis eligendi corporis incidunt, quod veniam commodi aut quasi! Animi natus deserunt nobis fugit maxime impedit iusto laboriosam aliquid eligendi dolore inventore aut minima omnis libero consectetur sint ex, quasi quod, veritatis provident necessitatibus atque reprehenderit esse accusamus? Nobis, sit? Cumque commodi, placeat ratione assumenda inventore expedita sequi quam nobis necessitatibus maxime aliquam. Quasi ducimus atque inventore consequuntur numquam eveniet modi ipsam sit exercitationem, eligendi in repudiandae quod iste minima illo sunt hic error. Laborum libero maiores explicabo maxime magni placeat voluptate suscipit qui dolorum eius omnis, recusandae eligendi nihil deserunt facilis repellat quidem minima temporibus? Recusandae explicabo velit labore cumque, ipsum omnis nostrum. Sit, nesciunt. Esse quisquam repellendus porro eveniet tenetur dicta deleniti delectus itaque veniam doloribus dolor sit iure enim possimus, accusantium quae ipsa architecto sapiente cumque ipsam vero? Sunt, aliquam. Ullam minus accusantium molestiae tempore. Repellat quasi provident eum hic ipsum assumenda aperiam impedit nostrum repudiandae. Pariatur nemo voluptatibus reprehenderit sed odio. Possimus architecto fugiat neque debitis porro modi aliquid placeat voluptate illum qui quidem, quibusdam consectetur esse facilis alias. Architecto aliquid culpa hic recusandae similique sed consectetur, dolorum necessitatibus a? Laboriosam qui labore dolore numquam ipsum molestias dicta commodi ex dignissimos officia? Ratione adipisci quaerat ducimus. Odit at error dolorem sit numquam expedita nam, totam quasi esse, odio soluta quis, sequi ipsam facilis ratione? Voluptas porro facilis officiis tempore cum, qui aliquam, incidunt est rerum natus repellat. Maxime sed, natus culpa placeat mollitia unde doloribus, minima eos perferendis sunt veniam iste dolore odit! Sunt assumenda numquam et minima temporibus quo nostrum atque amet cumque perferendis nobis, blanditiis optio voluptates ut non quis expedita dolores accusamus? Maxime molestias nulla placeat, atque iure nesciunt nisi temporibus labore ipsam obcaecati incidunt tempore delectus sed omnis modi quam itaque voluptas excepturi iusto debitis dolorum quasi et numquam! Veniam nesciunt, culpa delectus eos non quidem voluptatum modi fugit tempora ad alias doloribus omnis obcaecati eaque quos repellendus. Fugit harum eius, voluptatem, recusandae debitis enim at dolor labore eos inventore reiciendis id.
-
+<section class="results-box">
+  <div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="..." class="img-fluid rounded-start" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">Nome casa</h5>
+          <div class="row w-75 h-50">
+            <div class="col-3">
+              <span><i class="fa-solid fa-person-shelter"></i> 2</span><br>
+              <span>locali</span>
+            </div>
+            <div class="col-4">
+              <span><i class="fa-solid fa-ruler-combined"></i> 50m²</span><br>
+              <span>superficie</span>
+            </div>
+            <div class="col-3">
+              <span><i class="fa-solid fa-restroom"></i> 2</span><br>
+              <span>bagni</span>
+            </div>
+          </div>
+          <p class="card-text">Descrizione</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  
 </template>
 
-<style>
+<style lang="scss" scoped>
+
+.results-box{
+  margin: 20px;
+
+  .row{
+    padding: 0px 0px 9px 12px;
+    .col-3, .col-4{
+      padding: 0;
+      font-size: .6rem;
+      color: grey;
+    }
+  }
+}
 
 </style>
