@@ -71,18 +71,16 @@
 
 
     getApiNostra(){
-    axios.get(store.apiNostra,{
-      params:{
-        lonA: store.lonA,
-        latA: store.latA
-      }
-    })
+      let position = store.lonA + ',' + store.latA
+      
+      axios.get(store.apiNostra + position)
     .then(res =>{
       console.log(res.data)
     })
   },
   testFunzione(position){
     console.log(position);
+    console.log('ciao');
   },
     
     getFFAddress() {
@@ -107,7 +105,27 @@
       
       })
         
+    },
+
+
+    saveData() {
+      let input = document.getElementById('input-search')
+      let datalist = document.getElementById('address-search-results')
+      let options = document.getElementsByClassName('options')
+      let isChoose = false;
+
+      for (const option of options) {
+        // console.log(option.attributes.lat.value)
+        if (option.value == input.value) {
+          store.latA = option.attributes.lat.value;
+          store.lonA = option.attributes.lon.value;
+          isChoose = true
+        }
+        if (isChoose) this.getApiNostra();
+      }
+      
     }
+
   },
   mounted(){},
   computed:{
@@ -118,7 +136,7 @@
 
 
 <template>
-<div class="search-bar-container d-flex justify-content-center  align-items-center input-group mx-auto ">
+<div class="search-bar-container d-flex justify-content-center align-items-center input-group mx-auto ">
   <input
   type="text"
   class="form-control"
@@ -130,13 +148,13 @@
   v-model.trim="inputSearch"
   list="address-search-results"
   >
-  <datalist id="address-search-results">
-    <option v-for="address in this.mappedResults" :key="address.id" @click="testFunzione(address.position)" :value="address.string">{{address.string}}</option>
+  <datalist  id="address-search-results">
+    <option v-for="address in this.mappedResults" :position="address.position" :lat="address.position.lat" :lon="address.position.lon" class="options" :key="address.id" v-on:click="testFunzione(address.string)" :value="address.string">{{address.string}}</option>
   </datalist>
   
-  <form @submit.prevent="getApiNostra()">
-  <button class="btn btn-outline-secondary" type="button" id="button-addon2" @click="getApiNostra()">Cerca</button>
-</form>
+  <form>
+    <button class="btn btn-outline-secondary" type="button" id="button-addon2" @click="saveData()">Cerca</button>
+  </form>
 </div>
 </template>
 
