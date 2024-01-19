@@ -29,11 +29,15 @@ import Results from '../components/Results.vue';
 
 <template>
   <Header />
-  <SearchBar />
-  <Results />
+  <div class="container_custom">
+    <SearchBar />
+    <Results />
+  </div>
   <Footer />
 </template>
 
 <style lang="scss" scoped>
-
+.container_custom{
+  height: 100vh;
+}
 </style>
