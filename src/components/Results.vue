@@ -36,7 +36,7 @@ import CardResult from './partials/CardResult.vue';
 .box_cardResult{
   // display: flex;
   // flex-wrap: wrap;
-  height:calc(100vh - 160px - 250px);
+  min-height:calc(100vh - 160px - 250px);
   position: relative;
   z-index:3;
   
