@@ -1,5 +1,5 @@
 <script>
-  import SearchBar from './SearchBar.vue';
+  import HomeSearchBar from './HomeSearchBar.vue';
 
   export default {
   name:'Jumbotron',
@@ -9,7 +9,7 @@
     }
   },
   components:{ 
-    SearchBar
+    HomeSearchBar
   },
   methods:{},
   mounted(){},
@@ -21,7 +21,7 @@
 <template>
   <div class="img-box d-flex justify-content-center align-items-center">
     <div class="input-group mb-3 w-50">
-      <SearchBar />
+      <HomeSearchBar />
     </div>
   </div>
 </template>
