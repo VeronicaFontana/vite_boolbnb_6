@@ -1,7 +1,5 @@
 <script>
 import {store} from '../data/store';
-import Header from '../components/partials/Header.vue';
-import Footer from '../components/partials/Footer.vue';
 import Results from '../components/Results.vue';
 
   export default {
@@ -12,9 +10,8 @@ import Results from '../components/Results.vue';
     }
   },
   components:{
-    Header,
     Results,
-    Footer
+  
   },
   methods:{
     
@@ -26,8 +23,6 @@ import Results from '../components/Results.vue';
 
 
 <template>
-  <Header />
-
   <section class="filter-box">
     <div class="ms-2 h-100 d-flex align-items-center">
 
@@ -93,7 +88,6 @@ import Results from '../components/Results.vue';
   </section>
 
   <Results />
-  <Footer />
 </template>
 
 <style lang="scss" scoped>
