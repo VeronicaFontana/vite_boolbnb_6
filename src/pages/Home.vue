@@ -38,7 +38,6 @@ import Footer from '../components/partials/Footer.vue';
   <div class="container_custom">
     <SponsoredCards />
   </div>
-  <Footer />
 </template>
 
 
