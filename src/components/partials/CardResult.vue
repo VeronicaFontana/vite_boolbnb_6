@@ -34,7 +34,8 @@
       <div class="col-md-4">
         <img
             v-if="result.appartamento.image"
-            :src="isInStorage(result.appartamento.image) ? `http://127.0.0.1:8000/storage/${result.appartamento.image}` : `http://127.0.0.1:8000/img/${result.appartamento.image}`"
+            :src="`http://127.0.0.1:8000/storage/${result.appartamento.image}`"
+            onerror="this.src='/Placeholder.png'"
             class="img-fluid rounded-start"
             alt="..."
           />
