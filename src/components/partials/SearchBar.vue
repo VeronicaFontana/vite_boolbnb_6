@@ -1,5 +1,5 @@
 <script>
-  import axios from 'axios'; 
+  import axios from 'axios'
   import {store} from '../../data/store.js'
 
 
@@ -11,7 +11,8 @@
       results: [],
       mappedResults: [],
       timer:'',
-      isLoaded: false
+      isLoaded: false,
+      condizione: false,
     }
   },
   components:{},
@@ -30,7 +31,6 @@
           this.checkInputValue(this.inputSearch);
         }
       },500)
-
     },
   
     checkInputValue(inputSearch) {
@@ -129,7 +129,9 @@
     }
 
   },
-  mounted(){},
+  mounted(){
+    // console.log(window.location)
+  },
   computed:{
     
   }
@@ -138,7 +140,7 @@
 
 
 <template>
-<div class="search-bar-container d-flex justify-content-center align-items-center input-group mx-auto ">
+<div v-if="$route.name != 'home'" class="search-bar-container d-flex justify-content-center align-items-center input-group mx-auto ">
   <input
   type="text"
   class="form-control"
