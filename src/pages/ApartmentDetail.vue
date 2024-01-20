@@ -1,7 +1,5 @@
 <script>
 import {store} from '../data/store';
-import Header from '../components/partials/Header.vue';
-import Footer from '../components/partials/Footer.vue';
 
   export default {
   name:'ApartmentDetail',
@@ -11,8 +9,6 @@ import Footer from '../components/partials/Footer.vue';
     }
   },
   components:{
-    Header,
-    Footer
   },
   methods:{
     
@@ -24,10 +20,8 @@ import Footer from '../components/partials/Footer.vue';
 
 
 <template>
-  <Header />
   <SearchBar />
   <Results />
-  <Footer />
 </template>
 
 <style lang="scss" scoped>
