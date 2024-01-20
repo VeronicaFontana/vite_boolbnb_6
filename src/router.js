@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from "vue-router";
 
 import Home from '/src/pages/Home.vue'
 import AdvanceSearch from './pages/AdvanceSearch.vue'
+import ApartmentDetail from './pages/ApartmentDetail.vue'
 const router = createRouter({
   history: createWebHistory(),
   linkExactActiveClass: 'active',
@@ -16,6 +17,11 @@ const router = createRouter({
       path:'/search',
       name:'AdvanceSearch',
       component: AdvanceSearch
+    },
+    {
+      path:'/apartment/:slug',
+      name:'ApartmentDetail',
+      component: ApartmentDetail
     },
   ]
 });
