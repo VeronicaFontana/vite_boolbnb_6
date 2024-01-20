@@ -6,6 +6,7 @@ export const store = reactive({
   addressApiUrl: 'https://api.tomtom.com/search/2/geocode/',
   apiKey: 'H9LpZxM6CXyvTcM6MQohPzIS3ZH9d3Ke',
   apiNostra:'http://127.0.0.1:8000/api/search/',
+  apiSingleAparment:'http://127.0.0.1:8000/api/singleApartment/',
   apartments: [],
   addresses: [],
   sponsoredApartments: [],
