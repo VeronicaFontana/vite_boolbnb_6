@@ -29,7 +29,7 @@
     <li class="list-group-item"><i class="fa-solid fa-ruler-combined"></i> {{ apartment.square_meters }}m²</li>
   </ul>
   <div class="card-body">
-    <a href="#" class="card-link">Vai all'appartamento</a>
+    <router-link :to="{name: 'ApartmentDetail', params:{slug: apartment.slug}}">Vai all'appartamento</router-link>
   </div>
 </div>
 
