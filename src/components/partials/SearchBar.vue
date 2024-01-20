@@ -165,13 +165,4 @@
 
 <style lang="scss"  scoped>
 
-.search-bar-container {
-  width: 100vw;
-  z-index: 9999;
-  height: 90px;
-  #input-search {
-    width: 50%;
-    z-index: 9999;
-  }
-}
 </style>

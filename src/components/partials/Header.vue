@@ -1,10 +1,14 @@
 <script>
+import SearchBar from './SearchBar.vue';
+
   export default {
   name:'Header',
   data(){
     return{}
   },
-  components:{},
+  components:{
+    SearchBar
+  },
   methods:{},
   mounted(){},
   computed:{}
@@ -20,7 +24,7 @@
       </div>
 
       <div class="col-6 justify-content-center">
-        BARRA DI RICERCA
+        <SearchBar />
       </div>
 
       <div class="col-3 justify-content-end">

@@ -1,7 +1,6 @@
 <script>
 import {store} from '../data/store';
 import Header from '../components/partials/Header.vue';
-import SearchBar from '../components/partials/SearchBar.vue';
 import Footer from '../components/partials/Footer.vue';
 import Results from '../components/Results.vue';
 
@@ -14,7 +13,6 @@ import Results from '../components/Results.vue';
   },
   components:{
     Header,
-    SearchBar,
     Results,
     Footer
   },
@@ -29,7 +27,6 @@ import Results from '../components/Results.vue';
 
 <template>
   <Header />
-  <SearchBar />
 
   <section class="filter-box">
     <div class="ms-2 h-100 d-flex align-items-center">
@@ -102,6 +99,7 @@ import Results from '../components/Results.vue';
 <style lang="scss" scoped>
 .filter-box{
   width: 100vw;
+  margin-top: 90px;
   height: 60px;
   background-color: lightgrey;
 
