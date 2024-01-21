@@ -32,7 +32,7 @@ import {store} from '../data/store';
 
 
 <template>
-  <div class="box_detailapartment" v-for="apartmentSingle in store.apartmentSingle.apartment" :key="apartmentSingle">
+<div class="box_detailapartment" id="top" v-for="apartmentSingle in store.apartmentSingle.apartment" :key="apartmentSingle">
     <!-- Credo che ci vadano le info dell'appartamento -->
     <!-- Box che contiene tutto -->
 <div class="row">
@@ -58,8 +58,20 @@ import {store} from '../data/store';
       </div>
 
     <div class="col-4">
-      <div class="box_user">
-        <p>sas</p>
+      <div class="box_user p-4 text-center">
+        <h3>Informazioni sull'annuncio</h3>
+        <ul class="list-unstyled">
+          <li v-if="apartmentSingle.user.name || apartmentSingle.user.surname">
+            <p>Nome del proprietario: {{ apartmentSingle.user.name ?? '' }} {{ apartmentSingle.user.surname ?? '' }}</p>
+          </li>
+          <li>
+            <p>Indirizzo email: {{ apartmentSingle.user.email }}</p>
+          </li>
+          <li>
+            <p>Appartamento inserito il {{ apartmentSingle.created_at ?? '' }}</p>
+          </li>
+        </ul>
+        <button type="button" class="btn btn-success">Chiedi informazioni</button>
       </div>
     </div>
     </div>
@@ -112,12 +124,12 @@ import {store} from '../data/store';
               <div class="box_service d-flex justify-content-center">
                 <!-- sara la riga dei servizi -->
                 <div class="row w-100">
-                  <div class="col-2 d-flex align-items-center">
-                    <h3>Servizi :</h3>
+                  <div class="col-3 d-flex align-items-center">
+                    <h3>Servizi:</h3>
                   </div>
-                  <div class="col-10">
-                    <ul>
-                      <li class="list-unstyled" v-for="service in apartmentSingle.services" :key="service"><i :class="service.icon"></i>{{ service.name }}</li>
+                  <div class="col-9 d-flex align-items-center">
+                    <ul class="d-flex flex-wrap m-0">
+                      <li class="list-unstyled px-3" v-for="service in apartmentSingle.services" :key="service"><i :class="service.icon"></i> {{ service.name }}</li>
                     </ul>
                   </div>
                   
@@ -144,14 +156,13 @@ import {store} from '../data/store';
 
 <style lang="scss" scoped>
 .box_detailapartment{
-  margin-top: 90px;
+  margin-top: 110px;
   .col-10{
     // border: solid 1px black;
     // background-color: brown;
     .row{
       .col-8{
       // background-color: darkcyan;
-      border: solid 1px rgb(182, 26, 26);
       .box_card{
         height: 100%;
         padding: 10px 5px;
@@ -175,9 +186,8 @@ import {store} from '../data/store';
       }
       .col-4{
         // background-color: darkorange;
-      border: solid 1px rgb(15, 202, 56);
         .box_user{
-          height: 500px;
+          height: fit;
           background-color: gray;
           border-radius: 25px;
           margin:20px;
@@ -188,15 +198,17 @@ import {store} from '../data/store';
   .box_rooms{
     height: 200px;
     margin: 20px 0;
+    padding: 0 10px;
     border-radius: 25px;
-    border: solid 1px gray;
-    background-color: lightgrey;
+    border: solid 1px grey;
+    
     .row{
       .col{
         border: solid 1px black;
         border-radius: 25px;
         text-align: center;
         padding: 20px 0;
+        background-color: lightgrey;
         i{
           font-size: 2rem;
         }
@@ -206,8 +218,8 @@ import {store} from '../data/store';
   }
 
   .box_service{
-    height: 300px;
-    margin: 20px 0;
+    margin-bottom: 20px;
+    min-height: 100px;
     border-radius: 25px;
     border: solid 1px gray;
     background-color: lightgrey;
