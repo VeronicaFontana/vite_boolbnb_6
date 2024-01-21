@@ -60,7 +60,7 @@
               <span>bagni</span>
             </div>
           </div>
-          <p class="card-text">Descrizione</p>
+          <router-link  :to="{name: 'ApartmentDetail', params:{slug: result.appartamento.slug}}">Vai all'appartamento</router-link>
           <p class="card-text">Questo appartamento dista: {{ formattedDistance(result.distanza) }} chilometri</p>
         </div>
       </div>
