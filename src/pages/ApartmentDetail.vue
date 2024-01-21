@@ -15,14 +15,12 @@ import {store} from '../data/store';
     getSingleApartment(slug){
       axios.get(store.apiSingleAparment + slug)
       .then(res=>{
-        this.apartmentSingle = res.data;
+        store.apartmentSingle = res.data;
         console.log(res.data);
-        // this.apartment.forEach(element => {
-        //   console.log(element.data)
-        // });
-        
-
       })
+      .catch(error => {
+        console.error('Errore nella chiamata API:', error);
+      });
     }
   },
   mounted(){
@@ -45,10 +43,19 @@ import {store} from '../data/store';
 
       <div class="col-8">
 
-      <div class="box_card">
-        qua non mi ricordo cosa ci va
+      <!-- Template -->
+        <div class="box_card" v-for="apartmentSingle in store.apartmentSingle.apartment" :key="apartmentSingle">
+          <!-- cicliamo il titolo per un singolo appartamento -->
+          <h2 class="p-2">{{ apartmentSingle.title }}</h2>
+          <p class="px-2 testo_secondario"><strong>Indirizzo</strong><em>: {{ apartmentSingle.address }}</em></p>
+          <div class="box_img">
+            <img v-if="apartmentSingle.image"
+            :src="`http://127.0.0.1:8000/storage/${apartmentSingle.image}`"
+            onerror="this.src='/Placeholder.png'" alt="">
+          </div>
+
+        </div>
       </div>
-    </div>
 
     <div class="col-4">
       <div class="box_user">
@@ -104,8 +111,20 @@ import {store} from '../data/store';
       .box_card{
         height: 500px;
         margin: 20px;
+        padding: 0px 5px;
         border-radius: 25px;
         background-color: lightgrey;
+        .testo_secondario{
+          font-size: 0.9rem;
+        }
+        .box_img{
+          width: 300px;
+          height: 200px;
+          img{
+            width: 100%;
+          height: 100%;
+          }
+        }
       }
 
       }
