@@ -2,7 +2,7 @@
 import axios from 'axios';
 import {store} from '../data/store';
 
-  export default {
+export default {
   name:'ApartmentDetail',
   data(){
     return{
@@ -17,11 +17,13 @@ import {store} from '../data/store';
         email:[],
         message:[],
       },
+      map: ''
     }
   },
   components:{
   },
   methods:{
+
     getSingleApartment(slug){
       axios.get(store.apiSingleAparment + slug)
       .then(res=>{
@@ -32,6 +34,7 @@ import {store} from '../data/store';
         console.error('Errore nella chiamata API:', error);
       });
     },
+
     formatDate(){
       let newDate = new Date();
       let year =  newDate.getFullYear();
@@ -48,6 +51,7 @@ import {store} from '../data/store';
 
       this.dateString = year + '-' + formattedMonth + '-' + formattedDay;
     },
+
     sendMessageUser(){
       const data = {
         full_name: this.full_name,
@@ -72,15 +76,53 @@ import {store} from '../data/store';
             this.errors = {};
           }
       })
+    },
+
+
+    getMap() {
+      setTimeout(() => {
+        console.log(store.apartmentSingle.apartment[0].lat)
+        let mapElement = document.createElement('div');
+        // mapElement.innerHTML = 'alfonso'
+        // document.getElementById('box_mappa').appendChild(mapElement)
+        
+        let lat = store.apartmentSingle.apartment[0].lat;
+        let lng = store.apartmentSingle.apartment[0].lng
+        
+        
+        
+
+        let center = { lat: lat, lng: lng }
+        mapElement = tt.map({
+          key: "K3k0yOkyU7WALeqebCABeIkAJp9nGGmo",
+          container: "map",
+          center: center,
+          zoom: 15
+        })
+        mapElement.on("load",() =>{
+          new tt.Marker().setLngLat(center).addTo(mapElement)
+          new tt.Marker().setLngLat({lat: lat, lng: lng}).addTo(mapElement)
+        })
+      }, 1000)
+
+      
+
     }
+
+
   },
   mounted(){
-    this.getSingleApartment(this.$route.params.slug)
+
+
     this.formatDate()
+
+    this.getSingleApartment(this.$route.params.slug);
+    this.getMap();
+
   },
   computed:{}
-  }
-  </script>
+}
+</script>
 
 
 <template>
@@ -237,9 +279,11 @@ import {store} from '../data/store';
       <!-- Terzo box dve andrà messa la mappa con il point  -->
       <div class="row">
         <div class="col-10 offset-1 border-2">
-          <div class="box_mappa">
-            jdncjnew
+          <div class="box_mappa" id="box_mappa">
+            
+            <div id="map" style="width: 100%;height: 100%;"></div>
           </div>
+
 
         </div>
       </div>
@@ -320,8 +364,10 @@ import {store} from '../data/store';
   .row{
     .col-10{
       .box_mappa{
-        height: 300px;
-        background-color: olive;
+        display: flex;
+        justify-content: center;
+        width: 1000px;
+        height: 600px;
       }
     }
   }
