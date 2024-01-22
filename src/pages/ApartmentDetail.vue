@@ -6,7 +6,17 @@ import {store} from '../data/store';
   name:'ApartmentDetail',
   data(){
     return{
-      store
+      store,
+      success:false,
+      full_name:'',
+      email:'',
+      message:'',
+      date:'',
+      errors:{
+        full_name:[],
+        email:[],
+        message:[],
+      },
     }
   },
   components:{
@@ -21,10 +31,52 @@ import {store} from '../data/store';
       .catch(error => {
         console.error('Errore nella chiamata API:', error);
       });
+    },
+    formatDate(){
+      let newDate = new Date();
+      let year =  newDate.getFullYear();
+      let month = newDate.getMonth() + 1;
+      let formattedMonth = month.toLocaleString('it-IT', {
+          minimumIntegerDigits: 2,
+          useGrouping: false
+      })
+      let day = newDate.getDate();
+      let formattedDay = day.toLocaleString('it-IT', {
+          minimumIntegerDigits: 2,
+          useGrouping: false
+      })
+
+      this.dateString = year + '-' + formattedMonth + '-' + formattedDay;
+    },
+    sendMessageUser(){
+      const data = {
+        full_name: this.full_name,
+        email: this.email,
+        message: this.message,
+        date: this.dateString,
+      }
+      axios.post(store.apiUrlSendMessage + 'send-message', data)
+      .then(res=>{
+        console.log(store.apiUrlSendMessage +'send-message', data);
+        console.log(res.data);
+        this.success = res.data.success;
+        if(!this.success){
+          this.errors = res.data.errors;
+        console.log(this.errors);
+        }else{
+            // Resetta i campi del form
+            console.log('Reset dei campi del form');
+            this.full_name = '';
+            this.email = '';
+            this.message = '';
+            this.errors = {};
+          }
+      })
     }
   },
   mounted(){
     this.getSingleApartment(this.$route.params.slug)
+    this.formatDate()
   },
   computed:{}
   }
@@ -71,7 +123,48 @@ import {store} from '../data/store';
             <p>Appartamento inserito il {{ apartmentSingle.created_at ?? '' }}</p>
           </li>
         </ul>
-        <button type="button" class="btn btn-success">Chiedi informazioni</button>
+        <!-- Qua ci andra l'offcanvas dell'invio del messaggio  -->
+        <!-- Il form si apre qua del messaggio -->
+        <form @submit.prevent="sendMessageUser()">
+          <!-- ------------------------ -->
+          <div v-if="!success" class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasRightLabel">Invia il messaggio al proprietario</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <!-- NOME E COGNOME -->
+                <div class="mb-3">
+                  <label for="full_name" class="form-label">Inserisci il tuo nome e cognome</label>
+                  <input v-model="full_name" name="full_name" type="text" class="form-control" id="full_name" placeholder="Mario Rossi">
+                  <p class="error" v-for="error in errors.full_name" :key="error.id">{{ error }}</p>
+                </div>
+              <!-- EMAIL -->
+                <div class="mb-3">
+                  <label for="email" class="form-label">Inserisci la tua Email@ *</label>
+                  <input v-model="email" name="email" type="email" class="form-control" id="email" placeholder="name@example.com">
+                  <p class="error" v-for="error in errors.email" :key="error.id">{{ error }}</p>
+                </div>
+              <!-- MESSAGGIO -->
+                <div class="mb-3">
+                  <label for="message" class="form-label">Invia il tuo messaggio *</label>
+                  <textarea v-model="message" name="message" class="form-control" id="message" rows="5"></textarea>
+                  <p class="error" v-for="error in errors.message" :key="error.id">{{ error }}</p>
+                </div>
+                <!-- BOTTONE DELL'INVIO FORM MESSAGE -->
+                <div>
+                  <button class="btn btn-light my-3" type="submit">Invia</button>
+                </div>
+            </div>
+          </div>
+          
+          <!-- ------------------------- -->
+          <div v-else>Email inviata correttamente</div>
+        </form>
+        
+        <!-- Il form si chiude qui -->
+
+        <button class="btn btn-success" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Chiedi informazioni</button>
       </div>
     </div>
     </div>
