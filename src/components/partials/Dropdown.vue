@@ -19,14 +19,6 @@
 <template>
 <ul class="dropdown-menu p-0">
   <li>
-    <a class="dropdown-item" >
-      <div class="p-3">
-        <input type="text" placeholder="Da" class="mx-2">
-        <input type="text" placeholder="A">
-      </div>
-    </a>
-  </li>
-  <li>
     <a class="dropdown-item num" data-value="Indifferente" @click="selectAndSearch('Indifferente')">
       Indifferente 
     </a>
