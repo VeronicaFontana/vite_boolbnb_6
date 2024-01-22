@@ -8,7 +8,13 @@ import Dropdown from '../components/partials/Dropdown.vue';
   data(){
     return{
       store,
-      selectedServices: []
+      selectedValues: {
+        stanze: null,
+        bagni: null,
+        camere: null,
+        superficie: null,
+        servizi: [], 
+      }
     }
   },
   components:{
@@ -16,12 +22,27 @@ import Dropdown from '../components/partials/Dropdown.vue';
     Dropdown
   },
   methods:{
-    showSelectedServices() {
-      console.log('Servizi selezionati:', this.selectedServices);
-    },
     selectAndSearch({ value, category }) {
-      console.log(`Valore selezionato (${category}):`, value);
-    }
+      this.selectedValues[category] = value;
+    },
+    executeQuery(){
+      let query = {
+        numeri: {
+          stanze: this.selectedValues.stanze,
+          bagni: this.selectedValues.bagni,
+          camere: this.selectedValues.camere,
+          superficie: this.selectedValues.superficie,
+        },
+        servizi: this.selectedValues.servizi,
+      };
+      
+      console.log("Query:", query);
+
+      this.selectedValues.stanze = null;
+      this.selectedValues.bagni = null;
+      this.selectedValues.camere = null;
+      this.selectedValues.superficie = null;
+    },
   },
   mounted(){
     
@@ -80,14 +101,15 @@ import Dropdown from '../components/partials/Dropdown.vue';
             </div>
             <div class="modal-body">
               <div v-for="(service, index) in store.services" :key="index">
-                <input type="checkbox" :id="'btn-check-outlined-' + index" class="btn-check" autocomplete="off" :value="service.name" v-model="selectedServices"/>
+                <input type="checkbox" :id="'btn-check-outlined-' + index" class="btn-check" autocomplete="off" :value="service.name" v-model="selectedValues.servizi"/>
                 <label :for="'btn-check-outlined-' + index" class="btn btn-outline-primary m-2" >{{ service.name }}</label> <br />
               </div>
-              <button type="button" class="btn btn-danger" @click="showSelectedServices">Cerca</button>
             </div>
           </div>
         </div>
       </div>
+
+      <button type="button" class="btn btn-danger" @click="executeQuery">Cerca</button>
     </div>
   </section>
 
