@@ -75,6 +75,7 @@ import CardFiltered from '../components/partials/CardFiltered.vue';
       <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
           <i class="fa-solid fa-person-shelter"></i> Stanze
+          <span>{{ store.selectedValues.rooms }}</span>
         </button>
         <Dropdown category="rooms" @dropdown-selected="selectAndSearch" />
       </div>
@@ -83,6 +84,7 @@ import CardFiltered from '../components/partials/CardFiltered.vue';
       <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
           <i class="fa-solid fa-restroom"></i> Bagni
+          <span>{{ store.selectedValues.bathrooms }}</span>
         </button>
         <Dropdown category="bathrooms" @dropdown-selected="selectAndSearch" />
       </div>
@@ -91,6 +93,7 @@ import CardFiltered from '../components/partials/CardFiltered.vue';
       <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
           <i class="fa-solid fa-bed"></i> Camere da letto
+          <span>{{ store.selectedValues.beds }}</span>
         </button>
         <Dropdown category="beds" @dropdown-selected="selectAndSearch" />
       </div>
@@ -99,6 +102,7 @@ import CardFiltered from '../components/partials/CardFiltered.vue';
       <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
           <i class="fa-solid fa-ruler-combined"></i> Superficie
+          <span>{{ store.selectedValues.square_meters }}</span>
         </button>
         <ul class="dropdown-menu p-0">
           <li>
