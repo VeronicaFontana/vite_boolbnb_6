@@ -102,12 +102,12 @@ import {store} from '../data/store';
         })
       }, 1000)
 
-          this.getMap();
     },
   },
   mounted(){
-    this.getSingleApartment(this.$route.params.slug)
-    this.formatDate()
+    this.getSingleApartment(this.$route.params.slug);
+    this.formatDate();
+    this.getMap();
   },
   computed:{}
   }
@@ -269,7 +269,7 @@ import {store} from '../data/store';
       <div class="row">
         <div class="col-10 offset-1 border-2">
           <div class="box_mappa">
-            jdncjnew
+            <div style="width: 100%; height: 100%;" id="map"></div>
           </div>
 
         </div>
@@ -351,7 +351,8 @@ import {store} from '../data/store';
   .row{
     .col-10{
       .box_mappa{
-        height: 300px;
+        width: 1000px;
+        height: 600px;
         background-color: olive;
       }
     }
