@@ -53,7 +53,7 @@ import {store} from '../data/store';
         full_name: this.full_name,
         email: this.email,
         message: this.message,
-        date: this.dateString
+        date: this.dateString,
       }
       axios.post(store.apiUrlSendMessage + 'send-message', data)
       .then(res=>{
@@ -62,8 +62,15 @@ import {store} from '../data/store';
         this.success = res.data.success;
         if(!this.success){
           this.errors = res.data.errors;
-        }
-
+        console.log(this.errors);
+        }else{
+            // Resetta i campi del form
+            console.log('Reset dei campi del form');
+            this.full_name = '';
+            this.email = '';
+            this.message = '';
+            this.errors = {};
+          }
       })
     }
   },
@@ -118,9 +125,9 @@ import {store} from '../data/store';
         </ul>
         <!-- Qua ci andra l'offcanvas dell'invio del messaggio  -->
         <!-- Il form si apre qua del messaggio -->
-        <form v-if="!success" @submit.prevent="sendMessageUser()">
+        <form @submit.prevent="sendMessageUser()">
           <!-- ------------------------ -->
-          <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+          <div v-if="!success" class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
             <div class="offcanvas-header">
               <h5 class="offcanvas-title" id="offcanvasRightLabel">Invia il messaggio al proprietario</h5>
               <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -150,10 +157,12 @@ import {store} from '../data/store';
                 </div>
             </div>
           </div>
+          
           <!-- ------------------------- -->
+          <div v-else>Email inviata correttamente</div>
         </form>
+        
         <!-- Il form si chiude qui -->
-        <div v-else>Email inviata correttamente</div>
 
         <button class="btn btn-success" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Chiedi informazioni</button>
       </div>
