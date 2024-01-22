@@ -7,7 +7,8 @@ import Dropdown from '../components/partials/Dropdown.vue';
   name:'AdvanceSearch',
   data(){
     return{
-      store
+      store,
+      selectedServices: []
     }
   },
   components:{
@@ -15,9 +16,13 @@ import Dropdown from '../components/partials/Dropdown.vue';
     Dropdown
   },
   methods:{
+    showSelectedServices() {
+      console.log('Servizi selezionati:', this.selectedServices);
+    }
+  },
+  mounted(){
     
   },
-  mounted(){},
   computed:{}
   }
   </script>
@@ -71,8 +76,11 @@ import Dropdown from '../components/partials/Dropdown.vue';
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <input type="checkbox" class="btn-check" id="btn-check-outlined" autocomplete="off">
-              <label v-for="service in store.services" :key="service" class="btn btn-outline-primary m-2" for="btn-check-outlined">{{ service.name }}</label><br>
+              <div v-for="(service, index) in store.services" :key="index">
+                <input type="checkbox" :id="'btn-check-outlined-' + index" class="btn-check" autocomplete="off" :value="service.name" v-model="selectedServices"/>
+                <label :for="'btn-check-outlined-' + index" class="btn btn-outline-primary m-2" >{{ service.name }}</label> <br />
+              </div>
+              <button type="button" class="btn btn-danger" @click="showSelectedServices">Cerca</button>
             </div>
           </div>
         </div>
