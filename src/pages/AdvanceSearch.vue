@@ -1,6 +1,7 @@
 <script>
 import {store} from '../data/store';
 import Results from '../components/Results.vue';
+import Dropdown from '../components/partials/Dropdown.vue';
 
   export default {
   name:'AdvanceSearch',
@@ -11,7 +12,7 @@ import Results from '../components/Results.vue';
   },
   components:{
     Results,
-  
+    Dropdown
   },
   methods:{
     
@@ -31,43 +32,7 @@ import Results from '../components/Results.vue';
         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
           <i class="fa-solid fa-person-shelter"></i> Stanze
         </button>
-        <ul class="dropdown-menu p-0">
-          <li>
-            <a class="dropdown-item" >
-              <div class="p-3">
-                <input type="text" placeholder="Da" class="mx-2">
-                <input type="text" placeholder="A">
-              </div>
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item num">
-              Indifferente 
-            </a>
-            <a class="dropdown-item num">
-              1  
-            </a>
-            <a class="dropdown-item num">
-              2
-            </a>
-            <a class="dropdown-item num">
-              3 
-            </a>
-            <a class="dropdown-item num">
-              4  
-            </a>
-            <a class="dropdown-item num">
-              5+ 
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item" >
-              <div class="p-3 d-flex justify-content-center">
-                <button type="button" class="btn btn-danger">Cerca</button>
-              </div>
-            </a>
-          </li>
-        </ul>
+        <Dropdown />
       </div>
 
       <!-- BAGNI -->
@@ -75,43 +40,7 @@ import Results from '../components/Results.vue';
         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
           <i class="fa-solid fa-restroom"></i> Bagni
         </button>
-        <ul class="dropdown-menu p-0">
-          <li>
-            <a class="dropdown-item" >
-              <div class="p-3">
-                <input type="text" placeholder="Da" class="mx-2">
-                <input type="text" placeholder="A">
-              </div>
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item num">
-              Indifferente 
-            </a>
-            <a class="dropdown-item num">
-              1  
-            </a>
-            <a class="dropdown-item num">
-              2
-            </a>
-            <a class="dropdown-item num">
-              3 
-            </a>
-            <a class="dropdown-item num">
-              4  
-            </a>
-            <a class="dropdown-item num">
-              5+ 
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item" >
-              <div class="p-3 d-flex justify-content-center">
-                <button type="button" class="btn btn-danger">Cerca</button>
-              </div>
-            </a>
-          </li>
-        </ul>
+        <Dropdown />
       </div>
 
       <!-- CAMERE -->
@@ -119,43 +48,7 @@ import Results from '../components/Results.vue';
         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
           <i class="fa-solid fa-bed"></i> Camere da letto
         </button>
-        <ul class="dropdown-menu p-0">
-          <li>
-            <a class="dropdown-item" >
-              <div class="p-3">
-                <input type="text" placeholder="Da" class="mx-2">
-                <input type="text" placeholder="A">
-              </div>
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item num">
-              Indifferente 
-            </a>
-            <a class="dropdown-item num">
-              1  
-            </a>
-            <a class="dropdown-item num">
-              2
-            </a>
-            <a class="dropdown-item num">
-              3 
-            </a>
-            <a class="dropdown-item num">
-              4  
-            </a>
-            <a class="dropdown-item num">
-              5+ 
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item" >
-              <div class="p-3 d-flex justify-content-center">
-                <button type="button" class="btn btn-danger">Cerca</button>
-              </div>
-            </a>
-          </li>
-        </ul>
+        <Dropdown />
       </div>
 
       <!-- SUPERFICIE -->
@@ -163,59 +56,27 @@ import Results from '../components/Results.vue';
         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
           <i class="fa-solid fa-ruler-combined"></i> Superficie
         </button>
-        <ul class="dropdown-menu p-0">
-          <li>
-            <a class="dropdown-item" >
-              <div class="p-3">
-                <input type="text" placeholder="Da" class="mx-2">
-                <input type="text" placeholder="A">
-              </div>
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item num">
-              Indifferente 
-            </a>
-            <a class="dropdown-item num">
-              1  
-            </a>
-            <a class="dropdown-item num">
-              2
-            </a>
-            <a class="dropdown-item num">
-              3 
-            </a>
-            <a class="dropdown-item num">
-              4  
-            </a>
-            <a class="dropdown-item num">
-              5+ 
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item" >
-              <div class="p-3 d-flex justify-content-center">
-                <button type="button" class="btn btn-danger">Cerca</button>
-              </div>
-            </a>
-          </li>
-        </ul>
+        <Dropdown />
       </div>
 
       <!-- SERVIZI -->
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <i class="fa-solid fa-bell-concierge"></i> Servizi
-        </button>
-        <div class="dropdown-menu service-box">
-          <div class="d-flex flex-wrap px-2">
-            <input type="checkbox" class="btn-check" id="btn-check-outlined" autocomplete="off">
-            <label v-for="service in store.services" :key="service" class="btn btn-outline-primary m-2" for="btn-check-outlined">{{ service.name }}</label><br>
+      <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <i class="fa-solid fa-bell-concierge"></i> Servizi
+      </button>
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Servizi disponibili</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <input type="checkbox" class="btn-check" id="btn-check-outlined" autocomplete="off">
+              <label v-for="service in store.services" :key="service" class="btn btn-outline-primary m-2" for="btn-check-outlined">{{ service.name }}</label><br>
+            </div>
           </div>
-          
         </div>
       </div>
-
     </div>
   </section>
 
@@ -231,19 +92,7 @@ import Results from '../components/Results.vue';
 
   .dropdown{
     margin-right: 20px;
-
-    .service-box{
-      width: 350px;
-    }
-
-    .dropdown-item{
-      padding: 0px;
-    }
-    .num{
-      padding: 10px 20px;
-    }
     
   }
 }
-
 </style>
