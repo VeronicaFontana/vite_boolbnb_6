@@ -23,7 +23,8 @@ export const store = reactive({
     superficie: null,
     servizi: [], 
   },
-  filteredApartments: []
+  filteredApartments: [],
+  apiFIlteredAp: 'http://127.0.0.1:8000/api/result'
 })
 
 // https://api.tomtom.com/search/2/Geocode/52.157831,5.223776.json?key={Your_API_Key}

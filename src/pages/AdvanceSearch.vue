@@ -40,19 +40,13 @@ import axios from 'axios';
       store.selectedValues.camere = null;
       store.selectedValues.superficie = null;
     },
-    getApartments(){
-      axios.get(store.apiUrl, {
+    getFilteredApartments(){
+      axios.get(store.apiFIlteredAp, {
         params:{
         }
       })
       .then((res) => {
-        store.apartments = res.data.apartments;
-        store.apartments.forEach(apartment=>{
-          if(store.apartments.rooms == store.selectedValues.stanze){
-            store.filteredApartments.push(apartment)
-          }
-        })
-        console.log("appartamenti filtrati:" + store.filteredApartments)
+        store.filteredApartments = res.data;
       })
       .catch(function (error) {
         console.log(error.message);
@@ -60,6 +54,7 @@ import axios from 'axios';
     }
   },
   mounted(){
+    this.getFilteredApartments();
   },
   computed:{}
   }
@@ -99,7 +94,28 @@ import axios from 'axios';
         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
           <i class="fa-solid fa-ruler-combined"></i> Superficie
         </button>
-        <Dropdown category="superficie" @dropdown-selected="selectAndSearch" />
+        <ul class="dropdown-menu p-0">
+          <li>
+            <a class="dropdown-item num" data-value="Indifferente" @click="selectAndSearch({ value: 'Indifferente', category: 'superficie' })">
+              Indifferente 
+            </a>
+            <a class="dropdown-item num" data-value="20" @click="selectAndSearch({ value: '20', category: 'superficie' })">
+              20  
+            </a>
+            <a class="dropdown-item num" data-value="40" @click="selectAndSearch({ value: '40', category: 'superficie' })">
+              40
+            </a>
+            <a class="dropdown-item num" data-value="60" @click="selectAndSearch({ value: '60', category: 'superficie' })">
+              60 
+            </a>
+            <a class="dropdown-item num" data-value="80" @click="selectAndSearch({ value: '80', category: 'superficie' })">
+              80 
+            </a>
+            <a class="dropdown-item num" data-value="100+" @click="selectAndSearch({ value: '100+', category: 'superficie' })">
+              100+ 
+            </a>
+          </li>
+        </ul>
       </div>
 
       <!-- SERVIZI -->
@@ -123,7 +139,7 @@ import axios from 'axios';
         </div>
       </div>
 
-      <button type="button" class="btn btn-danger" @click="executeQuery()">Cerca</button>
+      <button type="button" class="btn btn-danger ms-3" @click="executeQuery()">Cerca</button>
     </div>
   </section>
 
