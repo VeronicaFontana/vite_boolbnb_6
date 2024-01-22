@@ -18,6 +18,9 @@ import Dropdown from '../components/partials/Dropdown.vue';
   methods:{
     showSelectedServices() {
       console.log('Servizi selezionati:', this.selectedServices);
+    },
+    selectAndSearch({ value, category }) {
+      console.log(`Valore selezionato (${category}):`, value);
     }
   },
   mounted(){
@@ -37,7 +40,7 @@ import Dropdown from '../components/partials/Dropdown.vue';
         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
           <i class="fa-solid fa-person-shelter"></i> Stanze
         </button>
-        <Dropdown />
+        <Dropdown category="stanze" @dropdown-selected="selectAndSearch" />
       </div>
 
       <!-- BAGNI -->
@@ -45,7 +48,7 @@ import Dropdown from '../components/partials/Dropdown.vue';
         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
           <i class="fa-solid fa-restroom"></i> Bagni
         </button>
-        <Dropdown />
+        <Dropdown category="bagni" @dropdown-selected="selectAndSearch" />
       </div>
 
       <!-- CAMERE -->
@@ -53,7 +56,7 @@ import Dropdown from '../components/partials/Dropdown.vue';
         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
           <i class="fa-solid fa-bed"></i> Camere da letto
         </button>
-        <Dropdown />
+        <Dropdown category="camere" @dropdown-selected="selectAndSearch" />
       </div>
 
       <!-- SUPERFICIE -->
@@ -61,7 +64,7 @@ import Dropdown from '../components/partials/Dropdown.vue';
         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
           <i class="fa-solid fa-ruler-combined"></i> Superficie
         </button>
-        <Dropdown />
+        <Dropdown category="superficie" @dropdown-selected="selectAndSearch" />
       </div>
 
       <!-- SERVIZI -->

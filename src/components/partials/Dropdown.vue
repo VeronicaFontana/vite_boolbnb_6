@@ -1,13 +1,16 @@
 <script>
   export default {
   name:'Dropdown',
+  props:{
+    category: String
+  },
   data(){
     return{}
   },
   components:{},
   methods:{
     selectAndSearch(value) {
-      console.log("Valore selezionato:", value);
+      this.$emit("dropdown-selected", { value, category: this.category });
     },
   },
   mounted(){},
