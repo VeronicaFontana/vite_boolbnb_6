@@ -3,6 +3,7 @@ import {store} from '../data/store';
 import Results from '../components/Results.vue';
 import Dropdown from '../components/partials/Dropdown.vue';
 import axios from 'axios';
+import CardFiltered from '../components/partials/CardFiltered.vue';
 
   export default {
   name:'AdvanceSearch',
@@ -10,44 +11,49 @@ import axios from 'axios';
     return{
       store,
       axios,
-      selectedServices: [], // Array per memorizzare i servizi selezionati
-      filteredApartments: [] // Array per memorizzare gli appartamenti filtrati
+      selectedServices: [], 
     }
   },
   components:{
     Results,
-    Dropdown
+    Dropdown,
+    CardFiltered
   },
   methods:{
     selectAndSearch({ value, category }) {
       store.selectedValues[category] = value;
     },
-    executeQuery(){
+    executeQuery() {
       let query = {
-        numeri: {
-          stanze: store.selectedValues.stanze,
-          bagni: store.selectedValues.bagni,
-          camere: store.selectedValues.camere,
-          superficie: store.selectedValues.superficie,
-        },
-        servizi: store.selectedValues.servizi,
+        rooms: store.selectedValues.rooms,
+        bathrooms: store.selectedValues.bathrooms,
+        beds: store.selectedValues.beds,
+        square_meters: store.selectedValues.square_meters,
+        services: store.selectedValues.services,
       };
-      
+
       console.log("Query:", query);
 
-      store.selectedValues.stanze = null;
-      store.selectedValues.bagni = null;
-      store.selectedValues.camere = null;
-      store.selectedValues.superficie = null;
+      store.selectedValues.rooms = null;
+      store.selectedValues.bathrooms = null;
+      store.selectedValues.beds = null;
+      store.selectedValues.square_meters = null;
+
+      this.getFilteredApartments();
     },
     getFilteredApartments(){
-      axios.get('/filtered-apartments', { 
-          params:{ 
-            services: this.selectedServices 
-          } 
+      axios.get(store.apiFilter, { 
+        params:{ 
+          services: store.selectedValues.services,
+          stanze: store.selectedValues.rooms,
+          bagni: store.selectedValues.bathrooms,
+          camere: store.selectedValues.beds,
+          superficie: store.selectedValues.square_meters,
+        }
         })
         .then(response => {
-          this.filteredApartments = response.data;
+          this.store.filteredApartments = response.data.filteredApartments;
+          console.log("Response from getFilteredApartments:", response.data);
         })
         .catch(error => {
           console.error(error);
@@ -55,7 +61,6 @@ import axios from 'axios';
     }
   },
   mounted(){
-    this.getFilteredApartments();
   },
   computed:{}
   }
@@ -71,7 +76,7 @@ import axios from 'axios';
         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
           <i class="fa-solid fa-person-shelter"></i> Stanze
         </button>
-        <Dropdown category="stanze" @dropdown-selected="selectAndSearch" />
+        <Dropdown category="rooms" @dropdown-selected="selectAndSearch" />
       </div>
 
       <!-- BAGNI -->
@@ -79,7 +84,7 @@ import axios from 'axios';
         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
           <i class="fa-solid fa-restroom"></i> Bagni
         </button>
-        <Dropdown category="bagni" @dropdown-selected="selectAndSearch" />
+        <Dropdown category="bathrooms" @dropdown-selected="selectAndSearch" />
       </div>
 
       <!-- CAMERE -->
@@ -87,7 +92,7 @@ import axios from 'axios';
         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
           <i class="fa-solid fa-bed"></i> Camere da letto
         </button>
-        <Dropdown category="camere" @dropdown-selected="selectAndSearch" />
+        <Dropdown category="beds" @dropdown-selected="selectAndSearch" />
       </div>
 
       <!-- SUPERFICIE -->
@@ -97,22 +102,22 @@ import axios from 'axios';
         </button>
         <ul class="dropdown-menu p-0">
           <li>
-            <a class="dropdown-item num" data-value="Indifferente" @click="selectAndSearch({ value: 'Indifferente', category: 'superficie' })">
+            <a class="dropdown-item num" data-value="Indifferente" @click="selectAndSearch({ value: 'Indifferente', category: 'square_meters' })">
               Indifferente 
             </a>
-            <a class="dropdown-item num" data-value="20" @click="selectAndSearch({ value: '20', category: 'superficie' })">
+            <a class="dropdown-item num" data-value="20" @click="selectAndSearch({ value: '20', category: 'square_meters' })">
               20  
             </a>
-            <a class="dropdown-item num" data-value="40" @click="selectAndSearch({ value: '40', category: 'superficie' })">
+            <a class="dropdown-item num" data-value="40" @click="selectAndSearch({ value: '40', category: 'square_meters' })">
               40
             </a>
-            <a class="dropdown-item num" data-value="60" @click="selectAndSearch({ value: '60', category: 'superficie' })">
+            <a class="dropdown-item num" data-value="60" @click="selectAndSearch({ value: '60', category: 'square_meters' })">
               60 
             </a>
-            <a class="dropdown-item num" data-value="80" @click="selectAndSearch({ value: '80', category: 'superficie' })">
+            <a class="dropdown-item num" data-value="80" @click="selectAndSearch({ value: '80', category: 'square_meters' })">
               80 
             </a>
-            <a class="dropdown-item num" data-value="100+" @click="selectAndSearch({ value: '100+', category: 'superficie' })">
+            <a class="dropdown-item num" data-value="100+" @click="selectAndSearch({ value: '100+', category: 'square_meters' })">
               100+ 
             </a>
           </li>
@@ -132,7 +137,7 @@ import axios from 'axios';
             </div>
             <div class="modal-body">
               <div v-for="(service, index) in store.services" :key="index">
-                <input type="checkbox" :id="'btn-check-outlined-' + index" class="btn-check" autocomplete="off" :value="service.name" v-model="store.selectedValues.servizi"/>
+                <input type="checkbox" :id="'btn-check-outlined-' + index" class="btn-check" autocomplete="off" :value="service.name" v-model="store.selectedValues.services"/>
                 <label :for="'btn-check-outlined-' + index" class="btn btn-outline-primary m-2" >{{ service.name }}</label> <br />
               </div>
             </div>
@@ -144,12 +149,8 @@ import axios from 'axios';
     </div>
   </section>
 
-  
-    <div v-for="apartment in filteredApartments" :key="apartment">
-        <p>Nome: {{ apartment.name }}</p>
-    </div>
-
-  <Results />
+    <Results v-if="store.filteredApartments.length === 0" />
+    <CardFiltered v-else />
 </template>
 
 <style lang="scss" scoped>

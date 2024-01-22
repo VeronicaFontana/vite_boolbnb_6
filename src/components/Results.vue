@@ -28,7 +28,7 @@ import CardResult from './partials/CardResult.vue';
     <CardResult v-for="result in store.results" :key="result.id" :result="result"/>
     
   </div>
-  <h2 class="text-center " v-if="store.results.length == 0" >Non abbiamo nessun appartamento che soddisfi i tuoi criteri di ricerca &#9785;</h2>
+  <h2 class="text-center " v-if="store.results.length == 0 && store.filteredApartments.length == 0" >Non abbiamo nessun appartamento che soddisfi i tuoi criteri di ricerca &#9785;</h2>
   
 </template>
 
