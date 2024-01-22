@@ -40,10 +40,10 @@ import CardFiltered from '../components/partials/CardFiltered.vue';
       axios.get(store.apiFilter, { 
         params:{ 
           services: store.selectedValues.services,
-          stanze: store.selectedValues.rooms,
-          bagni: store.selectedValues.bathrooms,
-          camere: store.selectedValues.beds,
-          superficie: store.selectedValues.square_meters,
+          rooms: store.selectedValues.rooms,
+          bathrooms: store.selectedValues.bathrooms,
+          beds: store.selectedValues.beds,
+          square_meters: store.selectedValues.square_meters,
         }
         })
         .then(response => {
