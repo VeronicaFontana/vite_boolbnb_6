@@ -71,7 +71,31 @@ import {store} from '../data/store';
             <p>Appartamento inserito il {{ apartmentSingle.created_at ?? '' }}</p>
           </li>
         </ul>
-        <button type="button" class="btn btn-success">Chiedi informazioni</button>
+        <!-- Qua ci andra il format dell'invio del messaggio  -->
+        <!--  -->
+        <form v-if="!success" @submit.prevent="sendForm()">
+          <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasRightLabel">Invia il messaggio al proprietario</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">Inserisci la tua Email</label>
+                  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleFormControlTextarea1" class="form-label">Invia il tuo messaggio</label>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                </div>
+            </div>
+          </div>
+          <div>
+            <button class="btn btn-light my-3" type="submit">Invia</button>
+          </div>
+        </form>
+
+        <button class="btn btn-success" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Chiedi informazioni</button>
       </div>
     </div>
     </div>
