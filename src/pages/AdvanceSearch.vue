@@ -9,7 +9,9 @@ import axios from 'axios';
   data(){
     return{
       store,
-      axios
+      axios,
+      selectedServices: [], // Array per memorizzare i servizi selezionati
+      filteredApartments: [] // Array per memorizzare gli appartamenti filtrati
     }
   },
   components:{
@@ -30,8 +32,6 @@ import axios from 'axios';
         },
         servizi: store.selectedValues.servizi,
       };
-
-      this.getApartments();
       
       console.log("Query:", query);
 
@@ -41,16 +41,17 @@ import axios from 'axios';
       store.selectedValues.superficie = null;
     },
     getFilteredApartments(){
-      axios.get(store.apiFIlteredAp, {
-        params:{
-        }
-      })
-      .then((res) => {
-        store.filteredApartments = res.data;
-      })
-      .catch(function (error) {
-        console.log(error.message);
-      })
+      axios.get('/filtered-apartments', { 
+          params:{ 
+            services: this.selectedServices 
+          } 
+        })
+        .then(response => {
+          this.filteredApartments = response.data;
+        })
+        .catch(error => {
+          console.error(error);
+        });
     }
   },
   mounted(){
@@ -143,11 +144,10 @@ import axios from 'axios';
     </div>
   </section>
 
-  <div>
-    <p v-for="apartment in store.filteredApartments" :key="apartment">
-      nome dell'appartamento: {{ apartment.title }}
-    </p>
-  </div>
+  
+    <div v-for="apartment in filteredApartments" :key="apartment">
+        <p>Nome: {{ apartment.name }}</p>
+    </div>
 
   <Results />
 </template>
