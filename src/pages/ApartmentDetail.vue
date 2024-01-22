@@ -17,6 +17,7 @@ import {store} from '../data/store';
         email:[],
         message:[],
       },
+      map: ''
     }
   },
   components:{
@@ -72,7 +73,37 @@ import {store} from '../data/store';
             this.errors = {};
           }
       })
-    }
+    },
+
+
+    getMap() {
+      setTimeout(() => {
+        console.log(store.apartmentSingle.apartment[0].lat)
+        let mapElement = document.createElement('div');
+        // mapElement.innerHTML = 'alfonso'
+        // document.getElementById('box_mappa').appendChild(mapElement)
+        
+        let lat = store.apartmentSingle.apartment[0].lat;
+        let lng = store.apartmentSingle.apartment[0].lng
+        
+        
+        
+
+        let center = { lat: lat, lng: lng }
+        mapElement = tt.map({
+          key: "K3k0yOkyU7WALeqebCABeIkAJp9nGGmo",
+          container: "map",
+          center: center,
+          zoom: 15
+        })
+        mapElement.on("load",() =>{
+          new tt.Marker().setLngLat(center).addTo(mapElement)
+          new tt.Marker().setLngLat({lat: lat, lng: lng}).addTo(mapElement)
+        })
+      }, 1000)
+
+          this.getMap();
+    },
   },
   mounted(){
     this.getSingleApartment(this.$route.params.slug)
