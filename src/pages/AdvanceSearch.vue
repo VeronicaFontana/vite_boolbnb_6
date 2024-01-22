@@ -34,11 +34,6 @@ import CardFiltered from '../components/partials/CardFiltered.vue';
 
       console.log("Query:", query);
 
-      store.selectedValues.rooms = null;
-      store.selectedValues.bathrooms = null;
-      store.selectedValues.beds = null;
-      store.selectedValues.square_meters = null;
-
       this.getFilteredApartments();
     },
     getFilteredApartments(){
