@@ -2,19 +2,14 @@
 import {store} from '../data/store';
 import Results from '../components/Results.vue';
 import Dropdown from '../components/partials/Dropdown.vue';
+import axios from 'axios';
 
   export default {
   name:'AdvanceSearch',
   data(){
     return{
       store,
-      selectedValues: {
-        stanze: null,
-        bagni: null,
-        camere: null,
-        superficie: null,
-        servizi: [], 
-      }
+      axios
     }
   },
   components:{
@@ -23,29 +18,48 @@ import Dropdown from '../components/partials/Dropdown.vue';
   },
   methods:{
     selectAndSearch({ value, category }) {
-      this.selectedValues[category] = value;
+      store.selectedValues[category] = value;
     },
     executeQuery(){
       let query = {
         numeri: {
-          stanze: this.selectedValues.stanze,
-          bagni: this.selectedValues.bagni,
-          camere: this.selectedValues.camere,
-          superficie: this.selectedValues.superficie,
+          stanze: store.selectedValues.stanze,
+          bagni: store.selectedValues.bagni,
+          camere: store.selectedValues.camere,
+          superficie: store.selectedValues.superficie,
         },
-        servizi: this.selectedValues.servizi,
+        servizi: store.selectedValues.servizi,
       };
+
+      this.getApartments();
       
       console.log("Query:", query);
 
-      this.selectedValues.stanze = null;
-      this.selectedValues.bagni = null;
-      this.selectedValues.camere = null;
-      this.selectedValues.superficie = null;
+      store.selectedValues.stanze = null;
+      store.selectedValues.bagni = null;
+      store.selectedValues.camere = null;
+      store.selectedValues.superficie = null;
     },
+    getApartments(){
+      axios.get(store.apiUrl, {
+        params:{
+        }
+      })
+      .then((res) => {
+        store.apartments = res.data.apartments;
+        store.apartments.forEach(apartment=>{
+          if(store.apartments.rooms == store.selectedValues.stanze){
+            store.filteredApartments.push(apartment)
+          }
+        })
+        console.log("appartamenti filtrati:" + store.filteredApartments)
+      })
+      .catch(function (error) {
+        console.log(error.message);
+      })
+    }
   },
   mounted(){
-    
   },
   computed:{}
   }
@@ -101,7 +115,7 @@ import Dropdown from '../components/partials/Dropdown.vue';
             </div>
             <div class="modal-body">
               <div v-for="(service, index) in store.services" :key="index">
-                <input type="checkbox" :id="'btn-check-outlined-' + index" class="btn-check" autocomplete="off" :value="service.name" v-model="selectedValues.servizi"/>
+                <input type="checkbox" :id="'btn-check-outlined-' + index" class="btn-check" autocomplete="off" :value="service.name" v-model="store.selectedValues.servizi"/>
                 <label :for="'btn-check-outlined-' + index" class="btn btn-outline-primary m-2" >{{ service.name }}</label> <br />
               </div>
             </div>
@@ -109,9 +123,15 @@ import Dropdown from '../components/partials/Dropdown.vue';
         </div>
       </div>
 
-      <button type="button" class="btn btn-danger" @click="executeQuery">Cerca</button>
+      <button type="button" class="btn btn-danger" @click="executeQuery()">Cerca</button>
     </div>
   </section>
+
+  <div>
+    <p v-for="apartment in store.filteredApartments" :key="apartment">
+      nome dell'appartamento: {{ apartment.title }}
+    </p>
+  </div>
 
   <Results />
 </template>
