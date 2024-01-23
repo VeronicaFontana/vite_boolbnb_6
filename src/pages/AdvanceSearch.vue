@@ -42,8 +42,8 @@ import axios from 'axios';
         }
         })
         .then(response => {
-          this.store.filteredApartments = response.data.filteredApartments;
-          console.log("Response from getFilteredApartments:", response.data);
+          store.results = response.data.filteredApartments;
+          console.log("Response from getFilteredApartments:", store.results);
         })
         .catch(error => {
           console.error(error);
