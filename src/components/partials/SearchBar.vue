@@ -147,7 +147,7 @@
   placeholder="Dove vuoi cercare?"
   aria-label="Dove vuoi cercare?"
   aria-describedby="button-addon2"
-  @input="checkTimer()"
+  @keyup="checkTimer()"
   id="input-search"
   v-model.trim="inputSearch"
   list="address-search-results"
