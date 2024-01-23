@@ -2,11 +2,15 @@
 import SponsoredCards from '../components/SponsoredCards.vue';
 import Jumbotron from '../components/partials/Jumbotron.vue';
 import Footer from '../components/partials/Footer.vue';
+import axios from 'axios';
+import { store } from '../data/store';
 
   export default {
   name:'Home',
   data(){
-    return{}
+    return{
+      store
+    }
   },
   components:{
     Jumbotron,
@@ -21,13 +25,16 @@ import Footer from '../components/partials/Footer.vue';
       })
       .then((res) => {
         store.services = res.data.services;
+        console.log(store.services);
       })
       .catch(function (error) {
         console.log(error.message);
       })
     }
   },
-  mounted(){},
+  mounted(){
+    this.getServices();
+  },
   computed:{}
   }
   </script>
