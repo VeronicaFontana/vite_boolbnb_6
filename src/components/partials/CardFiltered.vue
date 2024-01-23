@@ -5,7 +5,7 @@ import { store } from '../../data/store';
   export default {
     name:'CardResult',
     props: {
-      result: Object
+      apartment: Object
     },
     data(){
       return{
@@ -40,7 +40,7 @@ import { store } from '../../data/store';
 
       
       </div>-->
-      <div class="col-md-8" v-for="apartment in store.filteredApartments" :key="apartment">
+      <div class="col-md-8">
         <div class="card-body">
           <h5 class="card-title">{{ apartment.title }}</h5>
           <div class="row w-75 h-50" id="card-services">
