@@ -27,7 +27,9 @@
         .then((res) => {
           store.apartments = res.data.apartments;
           // console.log(res.data.apartments);
-          this.store.sponsoredApartments = store.apartments.filter(apartment => apartment.sponsors.length > 0);
+          console.log(res.data.sponsoredApartments);
+
+          this.store.sponsoredApartments = res.data.sponsoredApartments;
         })
         .catch(function (error) {
           // handle error
