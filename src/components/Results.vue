@@ -19,7 +19,7 @@ import CardFiltered from '../components/partials/CardFiltered.vue';
     methods: {},
     computed: {},
     mounted() {
-
+      console.log(store.filteredApartments);
     }
     
   }
@@ -28,8 +28,15 @@ import CardFiltered from '../components/partials/CardFiltered.vue';
 
 <template>
   <div class="box_cardResult">
-    <CardResult v-for="result in store.results" :key="result.id" :result="result"/>
-    <CardFiltered  v-for="apartment in store.results" :key="apartment" :apartment="apartment" />
+    <div v-if="store.filteredApartments.length == 0">
+      <CardResult v-for="result in store.results" :key="result.id" :result="result"/>
+    </div>
+    <div v-else>
+      <CardFiltered  v-for="apartment in store.filteredApartments" :key="apartment" :apartment="apartment" />
+    </div>
+    <div>
+      
+    </div>
   </div>
   <h2 class="text-center " v-if="store.results.length == 0 && store.filteredApartments.length == 0" >Non abbiamo nessun appartamento che soddisfi i tuoi criteri di ricerca &#9785;</h2>
   
