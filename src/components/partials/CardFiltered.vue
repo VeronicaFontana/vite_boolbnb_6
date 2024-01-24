@@ -31,19 +31,25 @@ import { store } from '../../data/store';
 
 
 <template>
-<section class="results-box">
   <div class="card mb-3 " style="max-width: 540px;">
     <div class="row g-0">
+
       <div class="col-md-4">
         
-          <img v-if="(apartment.image)" :src="`http://127.0.0.1:8000/storage/`+ apartment.image" class="img-fluid rounded-start" alt="..."> 
+        <img
+          v-if="(apartment.image)"
+          :src="`http://127.0.0.1:8000/storage/`+ apartment.image"
+          onerror="this.src='/Placeholder.png'"
+          class="img-fluid rounded-start"
+          alt="...">
 
       
       </div>
+
       <div class="col-md-8">
         <div class="card-body">
           <h5 class="card-title">{{ apartment.title }}</h5>
-          <div class="row w-75 h-50" id="card-services">
+          <div class="row w-75" id="card-services">
             <div class="col-3">
               <span><i class="fa-solid fa-person-shelter"></i> {{ apartment.rooms }}</span><br>
               <span>locali</span>
@@ -63,7 +69,6 @@ import { store } from '../../data/store';
       </div>
     </div>
   </div>
-</section>
 
 </template>
 

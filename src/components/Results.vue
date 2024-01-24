@@ -28,12 +28,16 @@ import CardFiltered from '../components/partials/CardFiltered.vue';
 
 <template>
   <div class="box_cardResult">
-    <div v-if="store.filteredApartments.length == 0">
+    <section class="results-box" v-if="store.filteredApartments.length == 0">
+
       <CardResult v-for="result in store.results" :key="result.id" :result="result"/>
-    </div>
-    <div v-else>
+
+    </section>
+
+    <section class="results-box" v-else>
       <CardFiltered  v-for="apartment in store.filteredApartments" :key="apartment" :apartment="apartment" />
-    </div>
+    </section>
+
     <div>
       
     </div>
@@ -49,7 +53,12 @@ import CardFiltered from '../components/partials/CardFiltered.vue';
   min-height:calc(100vh - 160px - 250px);
   position: relative;
   z-index:3;
-  
+  .results-box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 10px;
+  }
 }
 h2{
     position: absolute;

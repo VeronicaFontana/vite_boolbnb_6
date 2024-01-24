@@ -28,7 +28,6 @@
 
 
 <template>
-<section class="results-box">
   <div class="card mb-3 " style="max-width: 540px;">
     <div class="row g-0">
       <div class="col-md-4">
@@ -46,7 +45,7 @@
       <div class="col-md-8">
         <div class="card-body">
           <h5 class="card-title">{{ result.appartamento.title }}</h5>
-          <div class="row w-75 h-50" id="card-services">
+          <div class="row w-75" id="card-services">
             <div class="col-3">
               <span><i class="fa-solid fa-person-shelter"></i> {{ result.appartamento.rooms }}</span><br>
               <span>locali</span>
@@ -66,7 +65,6 @@
       </div>
     </div>
   </div>
-</section>
 
 </template>
 
