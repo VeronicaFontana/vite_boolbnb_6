@@ -19,13 +19,12 @@ export const store = reactive({
   services: [],
   selectedValues: {
     rooms: null,
-    bathrooms: null,
     beds: null,
-    square_meters: null,
     services: [], 
   },
   apiFilter: "http://127.0.0.1:8000/filtered-apartments",
   filteredApartments: [] ,
+  inputSearch: "",
 })
 
 // https://api.tomtom.com/search/2/Geocode/52.157831,5.223776.json?key={Your_API_Key}
