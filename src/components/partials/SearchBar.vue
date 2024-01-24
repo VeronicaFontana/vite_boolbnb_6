@@ -7,7 +7,7 @@
   name:'SearchBar',
   data(){
     return{
-      inputSearch: '',
+      inputSearch: store.inputSearch,
       results: [],
       mappedResults: [],
       timer:'',
@@ -20,7 +20,7 @@
 
     checkTimer(){
       this.mappedResults = [];
-      // this.isLoaded = false;
+      //store.inputSearch = "";
 
       if(this.timer != ''){
         clearTimeout(this.timer);
@@ -71,9 +71,12 @@
 
 
     getApiNostra(){
-      let position = store.lonA + ',' + store.latA
-      
-      axios.get(store.apiNostra + position)
+      axios.get(store.apiNostra, {
+        params:{ 
+          lonA: store.lonA,
+          latA: store.latA,
+        }
+      })
     .then(res =>{
       // console.log(res.data)
       store.results = res.data
@@ -111,6 +114,7 @@
 
 
     saveData() {
+      store.inputSearch = "";
       let input = document.getElementById('input-search')
       let datalist = document.getElementById('address-search-results')
       let options = document.getElementsByClassName('options')
@@ -125,12 +129,16 @@
         }
         if (isChoose) this.getApiNostra();
       }
-      
+      store.inputSearch = input.value;
+    },
+    readData(){
+      console.log(store.inputSearch);
+      this.inputSearch = store.inputSearch;
     }
 
   },
   mounted(){
-    // console.log(window.location)
+    this.readData();
   },
   computed:{
     
@@ -157,7 +165,7 @@
   </datalist>
   
   <form>
-    <router-link :to="{ name:'AdvanceSearch' }" class="btn btn-outline-secondary" type="button" id="button-addon2" @click="saveData()">
+    <router-link :to="{ name:'AdvanceSearch', query:{query: encodeURIComponent(this.inputSearch)} }" class="btn btn-outline-secondary" type="button" id="button-addon2" @click="saveData()">
       Cerca
     </router-link>
   </form>

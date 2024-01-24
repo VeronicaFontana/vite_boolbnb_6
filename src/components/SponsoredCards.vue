@@ -25,7 +25,7 @@
           }
         })
         .then((res) => {
-          store.apartments = res.data.apartments;
+          //store.apartments = res.data.apartments;
           // console.log(res.data.apartments);
           console.log(res.data.sponsoredApartments);
 
