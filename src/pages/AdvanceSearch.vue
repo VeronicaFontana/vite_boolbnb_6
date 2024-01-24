@@ -25,14 +25,15 @@ import axios from 'axios';
     getFilteredApartments(){
       axios.get(store.apiFilter, { 
         params:{ 
+          results: store.results,
           services: store.selectedValues.services,
           rooms: store.selectedValues.rooms,
           beds: store.selectedValues.beds,
         }
         })
         .then(response => {
-          store.results = response.data.filteredApartments;
-          console.log("Response from getFilteredApartments:", store.results);
+          store.filteredApartments = response.data.filteredApartments;
+          console.log("Response from getFilteredApartments:", store.filteredApartments);
         })
         .catch(error => {
           console.error(error);
