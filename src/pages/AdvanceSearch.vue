@@ -22,17 +22,6 @@ import axios from 'axios';
     selectAndSearch({ value, category }) {
       store.selectedValues[category] = value;
     },
-    executeQuery() {
-      let query = {
-        rooms: store.selectedValues.rooms,
-        beds: store.selectedValues.beds,
-        services: store.selectedValues.services,
-      };
-
-      console.log("Query:", query);
-
-      this.getFilteredApartments();
-    },
     getFilteredApartments(){
       axios.get(store.apiFilter, { 
         params:{ 
@@ -100,7 +89,7 @@ import axios from 'axios';
         </div>
       </div>
 
-      <button type="button" class="btn btn-success ms-3" @click="executeQuery()">Filtra i risultati</button>
+      <button type="button" class="btn btn-success ms-3" @click="getFilteredApartments()">Filtra i risultati</button>
     </div>
   </section>
 
