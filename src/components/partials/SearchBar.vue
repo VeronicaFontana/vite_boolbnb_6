@@ -7,7 +7,7 @@
   name:'SearchBar',
   data(){
     return{
-      inputSearch: store.inputSearch,
+      inputSearch: '',
       results: [],
       mappedResults: [],
       timer:'',
@@ -127,18 +127,18 @@
           store.lonA = option.attributes.lon.value;
           isChoose = true
         }
-        if (isChoose) this.getApiNostra();
+        if (isChoose){
+          store.inputSearch = input.value;
+          this.getApiNostra();
+        } 
       }
-      store.inputSearch = input.value;
-    },
-    readData(){
-      console.log(store.inputSearch);
-      this.inputSearch = store.inputSearch;
+      console.log(input.value);
     }
 
   },
   mounted(){
-    this.readData();
+    this.checkInputValue(decodeURIComponent(this.$route.query.query));
+    console.log(decodeURIComponent(this.$route.query.query));
   },
   computed:{
     
