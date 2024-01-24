@@ -23,17 +23,22 @@ import axios from 'axios';
       store.selectedValues[category] = value;
     },
     getFilteredApartments(){
+      axios.defaults.baseURL = 'http://127.0.0.1:8000';
       axios.get(store.apiFilter, { 
         params:{ 
-          results: store.results,
+          results: JSON.stringify(store.results),
           services: store.selectedValues.services,
           rooms: store.selectedValues.rooms,
           beds: store.selectedValues.beds,
         }
         })
         .then(response => {
-          store.filteredApartments = response.data.filteredApartments;
-          console.log("Response from getFilteredApartments:", store.filteredApartments);
+          store.filteredApartments = response.data.filteredApartmentsWithDistance;
+          console.log("Response from getFilteredApartments:", response.data);
+          store.filteredApartments.sort(function(a, b) {
+            return a.distanza - b.distanza;
+          });
+
         })
         .catch(error => {
           console.error(error);
@@ -41,6 +46,7 @@ import axios from 'axios';
     }
   },
   mounted(){
+    console.log(store.results);
   },
   computed:{}
   }

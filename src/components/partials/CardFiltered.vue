@@ -34,12 +34,12 @@ import { store } from '../../data/store';
 <section class="results-box">
   <div class="card mb-3 " style="max-width: 540px;">
     <div class="row g-0">
-      <!--<div class="col-md-4">
+      <div class="col-md-4">
         
-          <img v-if="(result.appartamento.image)" :src="`http://127.0.0.1:8000/storage/`+result.appartamento.image" class="img-fluid rounded-start" alt="..."> 
+          <img v-if="(apartment.image)" :src="`http://127.0.0.1:8000/storage/`+ apartment.image" class="img-fluid rounded-start" alt="..."> 
 
       
-      </div>-->
+      </div>
       <div class="col-md-8">
         <div class="card-body">
           <h5 class="card-title">{{ apartment.title }}</h5>
@@ -57,8 +57,8 @@ import { store } from '../../data/store';
               <span>bagni</span>
             </div>
           </div>
-          <!--<router-link  :to="{name: 'ApartmentDetail', params:{slug: result.appartamento.slug}}">Vai all'appartamento</router-link>-->
-          <!--<p class="card-text">Questo appartamento dista: {{ formattedDistance(result.distanza) }} chilometri</p>-->
+          <router-link  :to="{name: 'ApartmentDetail', params:{slug: apartment.slug}}">Vai all'appartamento</router-link>
+          <p class="card-text">Questo appartamento dista: {{ formattedDistance(apartment.distanza) }} chilometri</p>
         </div>
       </div>
     </div>
