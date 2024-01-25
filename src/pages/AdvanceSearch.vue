@@ -12,6 +12,7 @@ import axios from 'axios';
       store,
       axios,
       selectedServices: [], 
+      slider: 20000
     }
   },
   components:{
@@ -43,7 +44,22 @@ import axios from 'axios';
         .catch(error => {
           console.error(error);
         });
-    }
+    },
+
+    getApiNostra(){
+      axios.get(store.apiNostra, {
+        params:{ 
+          radius: this.slider,
+          lonA: store.lonA,
+          latA: store.latA,
+        }
+      })
+    .then(res =>{
+      console.log(res.data);
+      store.results = res.data
+      // console.log( store.results )
+    })
+  },
 
   },
   mounted(){
@@ -97,12 +113,8 @@ import axios from 'axios';
         </div>
       </div>
 
-      <div class="wrapper">
-        <div class="msg">
-          <span class="box">Custom Web Component</span>
-          RANGE SLIDER
-        </div>
-        <custom-slider min="0" max="100" value="50" @input="handleSliderInput"></custom-slider>
+      <div class="radius-slider">
+        <input type="range" min="2000" max="100000" step="10000" name="radius" id="radius" value="20000" v-model="slider" @change="getApiNostra()">
       </div>
 
       <button type="button" class="btn btn-success ms-3" @click="getFilteredApartments()">Filtra i risultati</button>
