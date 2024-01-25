@@ -44,6 +44,7 @@ import axios from 'axios';
           console.error(error);
         });
     }
+
   },
   mounted(){
     console.log(store.results);
@@ -96,12 +97,20 @@ import axios from 'axios';
         </div>
       </div>
 
+      <div class="wrapper">
+        <div class="msg">
+          <span class="box">Custom Web Component</span>
+          RANGE SLIDER
+        </div>
+        <custom-slider min="0" max="100" value="50" @input="handleSliderInput"></custom-slider>
+      </div>
+
       <button type="button" class="btn btn-success ms-3" @click="getFilteredApartments()">Filtra i risultati</button>
     </div>
   </section>
 
     <Results />
-    
+
 </template>
 
 <style lang="scss" scoped>
@@ -113,7 +122,6 @@ import axios from 'axios';
 
   .dropdown{
     margin-right: 20px;
-    
   }
 }
 </style>
