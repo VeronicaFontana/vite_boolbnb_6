@@ -64,7 +64,7 @@ import { store } from '../../data/store';
             </div>
           </div>
           <router-link  :to="{name: 'ApartmentDetail', params:{slug: apartment.slug}}">Vai all'appartamento</router-link>
-          <p class="card-text">Questo appartamento dista: {{ formattedDistance(apartment.distanza) }} chilometri</p>
+          <p class="card-text">Questo appartamento dista: {{ formattedDistance(apartment.distance) }} chilometri</p>
         </div>
       </div>
     </div>
