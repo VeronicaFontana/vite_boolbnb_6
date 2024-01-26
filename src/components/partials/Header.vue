@@ -20,7 +20,7 @@ import SearchBar from './SearchBar.vue';
   <header>
     <div class="row">
       <div class="col-3 justify-content-center">
-        <h1>BoolB&B</h1>
+        <a href="http://localhost:5173"><h1>BoolB&B</h1></a>
       </div>
 
       <div class="col-6 justify-content-center">
