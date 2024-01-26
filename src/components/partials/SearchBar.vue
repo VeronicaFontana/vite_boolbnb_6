@@ -71,7 +71,7 @@
 
 
     getApiNostra(){
-      axios.get(store.apiNostra, {
+      axios.get(store.apiTest, {
         params:{ 
           lonA: store.lonA,
           latA: store.latA,
@@ -79,7 +79,8 @@
       })
     .then(res =>{
       // console.log(res.data)
-      store.results = res.data
+      store.results = res.data.apartments
+      store.isLoaded = true
       // console.log( store.results )
     })
   },

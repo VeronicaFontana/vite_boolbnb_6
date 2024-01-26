@@ -22,7 +22,7 @@
 <template>
 <ul class="dropdown-menu p-0">
   <li>
-    <a class="dropdown-item num" data-value="Indifferente" @click="selectAndSearch('Indifferente')">
+    <a class="dropdown-item num" data-value="0" @click="selectAndSearch('0')">
       Indifferente 
     </a>
     <a class="dropdown-item num" data-value="1" @click="selectAndSearch('1')">
