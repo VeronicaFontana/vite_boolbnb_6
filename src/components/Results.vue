@@ -1,7 +1,7 @@
 <script>
 import { store } from '../data/store';
 import CardResult from './partials/CardResult.vue';
-import CardFiltered from '../components/partials/CardFiltered.vue';
+import Loader from './Loader.vue';
 
   export default {
 
@@ -9,17 +9,18 @@ import CardFiltered from '../components/partials/CardFiltered.vue';
 
     data() {
       return {
-        store
+        store,
+        isLoaded: false,
       }
     },
     components:{
       CardResult,
-      CardFiltered
+      Loader,
     },
     methods: {},
     computed: {},
     mounted() {
-      console.log(store.filteredApartments);
+      // console.log(store.filteredApartments);
     }
     
   }
@@ -28,21 +29,34 @@ import CardFiltered from '../components/partials/CardFiltered.vue';
 
 <template>
   <div class="box_cardResult">
-    <section class="results-box" v-if="store.filteredApartments.length == 0">
+
+
+    <div class="results-box" v-if="store.servicesApartments.length > 0">
+      <CardResult v-for="result in store.servicesApartments" :key="result.id" :result="result"/>
+
+    </div>
+
+    <section class="results-box" v-if="store.results.length > 0 && store.servicesApartments.length == 0">
 
       <CardResult v-for="result in store.results" :key="result.id" :result="result"/>
 
     </section>
 
-    <section class="results-box" v-else>
+
+    <h2 class="text-center " v-else-if="store.results.length == 0" >Non abbiamo nessun appartamento che soddisfi i tuoi criteri di ricerca &#9785;</h2>
+
+
+    
+
+    <!-- <section class="results-box" v-else>
       <CardFiltered  v-for="apartment in store.filteredApartments" :key="apartment" :apartment="apartment" />
-    </section>
+    </section> -->
 
     <div>
       
     </div>
   </div>
-  <h2 class="text-center " v-if="store.results.length == 0 && store.filteredApartments.length == 0" >Non abbiamo nessun appartamento che soddisfi i tuoi criteri di ricerca &#9785;</h2>
+
   
 </template>
 
