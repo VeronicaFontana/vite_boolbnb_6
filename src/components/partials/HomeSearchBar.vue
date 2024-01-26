@@ -151,7 +151,7 @@
 <div class="search-bar-container d-flex justify-content-center align-items-center input-group mx-auto ">
   <input
   type="text"
-  class="form-control"
+  class="form-control col-fluid"
   placeholder="Dove vuoi cercare?"
   aria-label="Dove vuoi cercare?"
   aria-describedby="button-addon2"
@@ -165,7 +165,7 @@
   </datalist>
   
   <form>
-    <router-link :to="{ name:'AdvanceSearch', query:{query: encodeURIComponent(this.inputSearch)} }" class="btn btn-outline-secondary" type="button" id="button-addon2" @click="saveData()">
+    <router-link :to="{ name:'AdvanceSearch', query:{query: encodeURIComponent(this.inputSearch)} }" class="btn" type="button" id="button-addon2" @click="saveData()">
       Cerca
     </router-link>
   </form>
@@ -175,4 +175,22 @@
 
 <style lang="scss"  scoped>
 
+@use '../../scss/partials/palette' as *;
+
+#address-search-results{
+  font-size: 1.3rem;
+  color: $background-dark;
+}
+  .btn{
+  background-color: $background-button;
+  color: $background-secondry-body;
+  border: 1px solid $background-secondry-body;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+    &:hover{
+      background-color: $background-button;
+      color: $background-secondry-body;
+      border: 1px solid $background-secondry-body;
+  }
+}
 </style>
