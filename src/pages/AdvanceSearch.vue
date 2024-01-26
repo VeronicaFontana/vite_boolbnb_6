@@ -2,6 +2,7 @@
 import {store} from '../data/store';
 import Results from '../components/Results.vue';
 import Dropdown from '../components/partials/Dropdown.vue';
+import SearchBar from '../components/partials/SearchBar.vue';
 import axios from 'axios';
 
 
@@ -18,6 +19,7 @@ import axios from 'axios';
   components:{
     Results,
     Dropdown,
+    SearchBar
   },
   methods:{
     selectAndSearch({ value, category }) {
@@ -73,51 +75,67 @@ import axios from 'axios';
 <template>
   <section class="filter-box">
     <div class="ms-2 h-100 d-flex align-items-center">
+      <SearchBar class="d-sm-none w-75"/>
 
-      <!-- STANZE -->
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <i class="fa-solid fa-person-shelter"></i> Stanze
-          <span>{{ store.selectedValues.rooms }}</span>
+      <button class="btn btn-primary h-100" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop"><i class="fa-solid fa-gear"></i></button>
+
+        <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasTopLabel">Offcanvas top</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            ...
+          </div>
+        </div>
+
+      <div class="d-none d-flex align-items-center">
+        <!-- STANZE -->
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa-solid fa-person-shelter"></i> Stanze
+            <span>{{ store.selectedValues.rooms }}</span>
+          </button>
+          <Dropdown category="rooms" @dropdown-selected="selectAndSearch" />
+        </div>
+    
+        <!-- CAMERE -->
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa-solid fa-bed"></i> Camere da letto
+            <span>{{ store.selectedValues.beds }}</span>
+          </button>
+          <Dropdown category="beds" @dropdown-selected="selectAndSearch" />
+        </div>
+    
+        <!-- SERVIZI -->
+        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <i class="fa-solid fa-bell-concierge"></i> Servizi
         </button>
-        <Dropdown category="rooms" @dropdown-selected="selectAndSearch" />
-      </div>
-
-      <!-- CAMERE -->
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <i class="fa-solid fa-bed"></i> Camere da letto
-          <span>{{ store.selectedValues.beds }}</span>
-        </button>
-        <Dropdown category="beds" @dropdown-selected="selectAndSearch" />
-      </div>
-
-      <!-- SERVIZI -->
-      <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        <i class="fa-solid fa-bell-concierge"></i> Servizi
-      </button>
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">Servizi disponibili</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <div v-for="(service, index) in store.services" :key="index">
-                <input type="checkbox" :id="'btn-check-outlined-' + index" class="btn-check" autocomplete="off" :value="service.name" v-model="store.selectedValues.services"/>
-                <label :for="'btn-check-outlined-' + index" class="btn btn-outline-primary m-2" >{{ service.name }}</label> <br />
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Servizi disponibili</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body d-flex flex-wrap">
+                <div v-for="(service, index) in store.services" :key="index">
+                  <input type="checkbox" :id="'btn-check-outlined-' + index" class="btn-check d-none" autocomplete="off" :value="service.name" v-model="store.selectedValues.services"/>
+                  <label :for="'btn-check-outlined-' + index" class="btn btn-outline-primary m-2" >{{ service.name }}</label> <br />
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+    
+        <div class="radius-slider">
+          <input type="range" min="2000" max="100000" step="10000" name="radius" id="radius" value="20000" v-model="slider" @change="getApiNostra()">
+        </div>
+    
+        <button type="button" class="btn btn-success ms-3" @click="getFilteredApartments()">Filtra i risultati</button>
 
-      <div class="radius-slider">
-        <input type="range" min="2000" max="100000" step="10000" name="radius" id="radius" value="20000" v-model="slider" @change="getApiNostra()">
       </div>
-
-      <button type="button" class="btn btn-success ms-3" @click="getFilteredApartments()">Filtra i risultati</button>
     </div>
   </section>
 

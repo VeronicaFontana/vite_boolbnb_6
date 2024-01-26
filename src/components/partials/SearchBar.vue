@@ -166,7 +166,7 @@
   
   <form>
     <router-link :to="{ name:'AdvanceSearch', query:{query: encodeURIComponent(this.inputSearch)} }" class="btn btn-outline-secondary" type="button" id="button-addon2" @click="saveData()">
-      Cerca
+      <i class="fa-solid fa-magnifying-glass fa-bounce"></i>
     </router-link>
   </form>
 </div>
