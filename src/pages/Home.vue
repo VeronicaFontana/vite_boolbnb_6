@@ -42,9 +42,7 @@ import { store } from '../data/store';
 
 <template>
   <Jumbotron />
-  <div class="container_custom">
-    <SponsoredCards />
-  </div>
+  <SponsoredCards />
 </template>
 
 

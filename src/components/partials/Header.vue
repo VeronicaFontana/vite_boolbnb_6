@@ -18,18 +18,28 @@ import SearchBar from './SearchBar.vue';
 
 <template>
   <header>
-    <div class="row">
-      <div class="col-3 justify-content-center">
-        <a href="http://localhost:5173"><h1>BoolB&B</h1></a>
+    <div class="row align-content-center align-items-center justify-content-center pt-3 pt-xs-2 pt-sm-0">
+      <div class="col-3 px-3">
+        <p>BoolB&B</p>
       </div>
 
-      <div class="col-6 justify-content-center">
-        <SearchBar />
+      <div class="col-6 ">
+        <SearchBar class="d-none d-sm-flex"/>
       </div>
 
-      <div class="col-3 justify-content-end">
-        <span class="pe-3"><a href="http://127.0.0.1:8000/login">Login <i class="fa-solid fa-arrow-right-to-bracket"></i></a></span>
-        <router-link :to="{name: 'home'}">Home</router-link>
+      <div class="col-3 align-items-center justify-content-center">
+        <div class="dropdown">
+          <a class="btn btn-secondary" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa-solid fa-bars"></i>
+          </a>
+
+          <ul class="dropdown-menu">
+            <li class="d-flex"><a class="dropdown-item" href="http://127.0.0.1:8000/login">Login<i class="fa-solid fa-arrow-right-to-bracket"></i></a></li>
+          </ul>
+        </div>
+        
+        <span class="pe-3 d-none"><a href="http://127.0.0.1:8000/login">Login <i class="fa-solid fa-arrow-right-to-bracket"></i></a></span>
+        <router-link class="d-none" :to="{name: 'home'}">Home</router-link>
       </div>
     </div>
   </header>
@@ -38,19 +48,33 @@ import SearchBar from './SearchBar.vue';
 
 <style lang="scss"  scoped>
 
+@use '../../scss/partials/palette' as *;
+
 header{
+  position: fixed;
   height: 90px;
   width: 100%;
-  background-color: beige;
-  position: fixed;
   top: 0;
   z-index: 998;
-
+  background-color:$background-primary-header;
+  p{
+  color:$background-button;
+  font-size: 2.3rem;
+  font-weight: 600;
+  }
   .col-3, .col-6{
     height: 90px;
     display: flex;
     align-items: center;
   }
+
+.btn{
+  padding: 10px;
+  background-color:$background-button;
+  i{
+    font-size: 1.5rem;
+  }
+}
 }
 
 

@@ -2,6 +2,7 @@
 import {store} from '../data/store';
 import Results from '../components/Results.vue';
 import Dropdown from '../components/partials/Dropdown.vue';
+import SearchBar from '../components/partials/SearchBar.vue';
 import axios from 'axios';
 import Loader from '../components/Loader.vue';
 
@@ -21,6 +22,7 @@ import Loader from '../components/Loader.vue';
     Results,
     Dropdown,
     Loader,
+    SearchBar
   },
   methods:{
     selectAndSearch({ value, category }) {
@@ -116,7 +118,21 @@ import Loader from '../components/Loader.vue';
 <template>
   <section class="filter-box">
     <div class="ms-2 h-100 d-flex align-items-center">
+      <SearchBar class="d-sm-none w-75"/>
 
+      <button class="btn btn-primary h-100" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop"><i class="fa-solid fa-gear"></i></button>
+
+      <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasTopLabel">Offcanvas top</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            ...
+          </div>
+        </div>
+
+      <div class="d-none d-flex align-items-center">
       <!-- STANZE -->
       <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -150,7 +166,7 @@ import Loader from '../components/Loader.vue';
               <h1 class="modal-title fs-5" id="exampleModalLabel">Servizi disponibili</h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body d-flex flex-wrap">
               <div v-for="(service, index) in store.services" :key="index">
                 <input type="checkbox" :id="'btn-check-outlined-' + index" class="btn-check" autocomplete="off" :value="service.name" />
                 <label :for="'btn-check-outlined-' + index" class="btn btn-outline-primary m-2" category="services" @click="executeQuery(service.name)" >{{ service.name }}</label> <br />

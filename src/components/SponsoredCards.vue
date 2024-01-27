@@ -62,19 +62,16 @@
 
 <template>
 
-  <h2 class="mx-2">Appartamenti in Evidenza</h2>
+  <div class="container">
+    <h2 class="my-2 text-center text-sm-start">Appartamenti in Evidenza</h2>
+    <div class="box_structure d-sm-flex flex-sm-wrap">
+      <Card v-for="apartment in store.sponsoredApartments" :key="apartment.id" :apartment="apartment" />
+    </div>
 
-  <Loader v-if="!isLoaded" />
-
-  <div v-else class="container_custom border-1 d-flex flex-wrap">
-    <Card v-for="apartment in store.sponsoredApartments" :key="apartment.id" :apartment="apartment" />
   </div>
 
 </template>
 
 <style lang="scss" scoped>
-.container_custom{
-  margin: auto;
-  
-}
+
 </style>
