@@ -18,8 +18,8 @@ export const store = reactive({
   apiServices: "http://127.0.0.1:8000/api/services",
   services: [],
   selectedValues: {
-    rooms: null,
-    beds: null,
+    rooms: 0,
+    beds: 0,
     services: []
   },
   apiFilter: "http://127.0.0.1:8000/filtered-apartments",

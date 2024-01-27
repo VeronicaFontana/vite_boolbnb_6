@@ -46,7 +46,7 @@ import Loader from '../components/Loader.vue';
         store.selectedValues.services.push(name);
       }
 
-      console.log(servicesArray)
+      // console.log(servicesArray)
       this.getFilteredApartments();
 
     },
@@ -67,13 +67,15 @@ import Loader from '../components/Loader.vue';
         }
         })
         .then(response => {
-          console.log(response.data.apartments)
+          // console.log(response.data.apartments)
           console.log("Response from results:", response.data);
           store.results = response.data.apartments;
           store.isLoaded = true;
-          if(response.data.servicesQuery.length > 0) {
-            store.servicesApartments = response.data.servicesQuery
-          }
+          // if(response.data.servicesQuery.length > 0) {
+          //   store.results = response.data.servicesQuery
+          // } else {
+          //   store.results = response.data.apartments;
+          // }
           // store.results.sort(function(a, b) {
           //   return a.distance - b.distance;
           // });
