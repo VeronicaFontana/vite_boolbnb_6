@@ -208,7 +208,7 @@ import {store} from '../data/store';
             <div class="row ">
               <div class="col-fluid col-sm-8">
 
-              <div class="box_rooms d-flex justify-content-center align-items-center d-sm-flex justify-content-sm-center">
+              <div class="box_rooms d-flex justify-content-center align-items-baseline align-items-sm-center d-sm-flex justify-content-sm-center">
                 <!--CAMERE E DATTAGLI DELL'APPARTAMENTO -->
                 <div class="row w-100 justify-content-center align-items-center flex-column flex-sm-row align-items-sm-center">
                   <!-- Qua ciclerò i servizi ovviamente per adesso lo tengo cosi per una questione visiva -->
@@ -242,34 +242,33 @@ import {store} from '../data/store';
 
       <!-- SERVIZI APPARTAMENTO -->
       <div class="row">
-        <div class="col-fluid col-sm-10 offset-sm-1 border-2">
+        <div class="col-fluid col-sm-10 offset-sm-1 mx-2 border-2 p-0">
+
+
+          <div class="box_service d-flex justify-content-center">
+            <!-- sara la riga dei servizi -->
             <div class="row">
-              <div class="col-12 col-sm-8">
-
-              <div class="box_service d-flex justify-content-center">
-                <!-- sara la riga dei servizi -->
-                <div class="row w-100">
-                  <div class="col-3 d-flex align-items-center">
-                    <h3>Servizi:</h3>
-                  </div>
-                  <div class="col-9 d-flex align-items-center">
-                    <ul class="d-flex flex-wrap m-0">
-                      <li class="list-unstyled px-3" v-for="service in apartmentSingle.services" :key="service"><i :class="service.icon"></i> {{ service.name }}</li>
-                    </ul>
-                  </div>
-                  
-
-                </div>
+              <div class="col-3 d-flex align-items-center">
+                <h3>Servizi:</h3>
               </div>
+              <div class="col-9 d-flex align-items-center p-0">
+                <ul class="d-flex flex-wrap m-0">
+                  <li class="list-unstyled px-3" v-for="service in apartmentSingle.services" :key="service"><i :class="service.icon"></i> {{ service.name }}</li>
+                </ul>
               </div>
+              
+
             </div>
+          </div>
+
+
         </div>
       </div>
 
       <!-- MAPPA CON POINT -->
       <div class="row">
-        <div class=" col-12 p-2 col-sm-10 offset-sm-1 border-2">
-          <div class="box_mappa">
+        <div class=" col-12 col-sm-10 offset-sm-1 border-2">
+          <div class="box_mappa mx-auto my-2">
             <div style="width: 100%; height: 100%;" id="map"></div>
           </div>
 
@@ -319,7 +318,7 @@ import {store} from '../data/store';
           background-color: gray;
           border-radius: 25px;
           margin:20px 0px;
-          @media (max-width: 420px) {
+          @media (max-width: 576px) {
             margin: 0;
           }
         }
@@ -332,7 +331,7 @@ import {store} from '../data/store';
     padding: 0 10px;
     border-radius: 25px;
     border: solid 1px grey;
-    @media (max-width: 420px) {
+    @media (max-width: 576px) {
       height: auto;
           }
     .row{
@@ -356,15 +355,20 @@ import {store} from '../data/store';
     border-radius: 25px;
     border: solid 1px gray;
     background-color: lightgrey;
+    width: 93%;
+    margin: 0 auto;
   }
+
+
   .row{
     .col-12{
+      padding: 0 !important;
       .box_mappa{
-        width: 1000px;
+        width: 100%;
         height: 600px;
         background-color: olive;
-        @media (max-width: 420px) {
-          width: auto;
+        @media (max-width: 576px) {
+          width: 90%;
           height: 400px;
           }
       }

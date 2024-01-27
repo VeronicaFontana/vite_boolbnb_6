@@ -59,7 +59,7 @@
               <span>letti</span>
             </div>
           </div>
-          <!-- <router-link  :to="{name: 'ApartmentDetail', params:{slug: result.slug}}">Vai all'appartamento</router-link> -->
+          <router-link  :to="{name: 'ApartmentDetail', params:{slug: result.slug}}">Vai all'appartamento</router-link>
           <p class="card-text "><i class="fa-solid fa-location-dot location-pointer"></i> {{ formattedDistance(result.distance) }} km</p>
         </div>
       </div>
