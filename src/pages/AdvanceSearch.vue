@@ -178,6 +178,7 @@ import Loader from '../components/Loader.vue';
         <input type="range" min="2000" max="100000" step="10000" name="radius" id="radius" value="20000" v-model="slider" @change="getApiNostra()">
       </div>
     </div>
+    </div>
   </section>
 
 

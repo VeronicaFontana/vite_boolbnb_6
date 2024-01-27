@@ -122,25 +122,26 @@ import {store} from '../data/store';
     <!--  -->
   <div class="col-10 offset-1 border-2">
 
-    <div class="row">
+    <div class="row flex-column flex-sm-row">
 
-      <div class="col-8">
+      <div class="col-fluid col-sm-8">
 
       <!-- Template -->
         <div class="box_card">
-          <!-- cicliamo il titolo per un singolo appartamento -->
+          <!--TITOLO APPARTAMENTO  -->
           <h2 class="p-2">{{ apartmentSingle.title }}</h2>
           <p class="px-2 testo_secondario"><strong>Indirizzo</strong><em>: {{ apartmentSingle.address }}</em></p>
+          <!-- BOX IMMAGINE -->
           <div class="box_img">
-            <img v-if="apartmentSingle.image"
+            <!-- <img v-if="apartmentSingle.image"
             :src="`http://127.0.0.1:8000/storage/${apartmentSingle.image}`"
-            onerror="this.src='/Placeholder.png'" alt="">
+            onerror="this.src='/Placeholder.png'" alt=""> -->
           </div>
 
         </div>
       </div>
-
-    <div class="col-4">
+      <!-- INFORMAZIONE SULL'ANNUNCIO -->
+    <div class="col-12 col-sm-4">
       <div class="box_user p-4 text-center">
         <h3>Informazioni sull'annuncio</h3>
         <ul class="list-unstyled">
@@ -158,7 +159,7 @@ import {store} from '../data/store';
         <!-- Il form si apre qua del messaggio -->
         <form @submit.prevent="sendMessageUser()">
           <!-- ------------------------ -->
-          <div v-if="!success" class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+          <div v-if="!success" class="offcanvas offcanvas-end pt-4 pt-sm-0" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
             <div class="offcanvas-header">
               <h5 class="offcanvas-title" id="offcanvasRightLabel">Invia il messaggio al proprietario</h5>
               <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -201,27 +202,27 @@ import {store} from '../data/store';
     </div>
   </div>
 </div>
-    <!-- Secondo box che conterranno non mi ricordo che cosa -->
+    <!-- DETTAGLI APPARTAMENTO -->
       <div class="row">
-        <div class="col-10 offset-1 border-2">
-            <div class="row">
-              <div class="col-8">
+        <div class="col-fluid col-sm-10 offset-sm-1 border-2">
+            <div class="row ">
+              <div class="col-fluid col-sm-8">
 
-              <div class="box_rooms d-flex justify-content-center">
-                <!-- sara la riga dei servizi -->
-                <div class="row w-100 align-items-center">
+              <div class="box_rooms d-flex justify-content-center align-items-center d-sm-flex justify-content-sm-center">
+                <!--CAMERE E DATTAGLI DELL'APPARTAMENTO -->
+                <div class="row w-100 justify-content-center align-items-center flex-column flex-sm-row align-items-sm-center">
                   <!-- Qua ciclerò i servizi ovviamente per adesso lo tengo cosi per una questione visiva -->
                   <div class="col">
                     <i class="fa-solid fa-person-shelter"></i>
                     <p><strong>{{ apartmentSingle.rooms }}</strong></p>
                     <h5>Stanze</h5>
                   </div>
-                  <div class="col mx-1">
+                  <div class="col mx-sm-1">
                     <i class="fa-solid fa-bed"></i>
                     <p><strong>{{apartmentSingle.beds}}</strong></p>
                     <h5>Camere</h5>
                   </div>
-                  <div class="col me-1">
+                  <div class="col me-sm-1">
                     <i class="fa-solid fa-restroom"></i>
                     <p><strong>{{apartmentSingle.bathrooms}}</strong></p>
                     <h5>Bagni</h5>
@@ -239,11 +240,11 @@ import {store} from '../data/store';
         </div>
       </div>
 
-      <!-- Qua ci andranno i servizi -->
+      <!-- SERVIZI APPARTAMENTO -->
       <div class="row">
-        <div class="col-10 offset-1 border-2">
+        <div class="col-fluid col-sm-10 offset-sm-1 border-2">
             <div class="row">
-              <div class="col-8">
+              <div class="col-12 col-sm-8">
 
               <div class="box_service d-flex justify-content-center">
                 <!-- sara la riga dei servizi -->
@@ -265,9 +266,9 @@ import {store} from '../data/store';
         </div>
       </div>
 
-      <!-- Terzo box dve andrà messa la mappa con il point  -->
+      <!-- MAPPA CON POINT -->
       <div class="row">
-        <div class="col-10 offset-1 border-2">
+        <div class=" col-12 p-2 col-sm-10 offset-sm-1 border-2">
           <div class="box_mappa">
             <div style="width: 100%; height: 100%;" id="map"></div>
           </div>
@@ -279,6 +280,7 @@ import {store} from '../data/store';
 </template>
 
 <style lang="scss" scoped>
+@use '../scss/partials/palette' as *;
 .box_detailapartment{
   margin-top: 110px;
   .col-10{
@@ -292,12 +294,14 @@ import {store} from '../data/store';
         padding: 10px 5px;
         border-radius: 25px;
         border: solid 1px gray;
+
         .testo_secondario{
           font-size: 0.9rem;
         }
         .box_img{
           width: 100%;
           height: 400px;
+          background-color: $background-dark;
           border-radius: 20px;
           img{
             width: 100%;
@@ -308,13 +312,16 @@ import {store} from '../data/store';
       }
 
       }
-      .col-4{
+      .col-12{
         // background-color: darkorange;
         .box_user{
           height: fit;
           background-color: gray;
           border-radius: 25px;
-          margin:20px;
+          margin:20px 0px;
+          @media (max-width: 420px) {
+            margin: 0;
+          }
         }
       }
     }
@@ -325,7 +332,9 @@ import {store} from '../data/store';
     padding: 0 10px;
     border-radius: 25px;
     border: solid 1px grey;
-    
+    @media (max-width: 420px) {
+      height: auto;
+          }
     .row{
       .col{
         border: solid 1px black;
@@ -349,11 +358,15 @@ import {store} from '../data/store';
     background-color: lightgrey;
   }
   .row{
-    .col-10{
+    .col-12{
       .box_mappa{
         width: 1000px;
         height: 600px;
         background-color: olive;
+        @media (max-width: 420px) {
+          width: auto;
+          height: 400px;
+          }
       }
     }
   }
