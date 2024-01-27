@@ -54,8 +54,8 @@ export default{
 
 <template>
   <Header />
-<RouterView />
-<Footer/>
+  <RouterView />
+  <Footer/>
 </template>
 
 <style lang="scss" scoped>

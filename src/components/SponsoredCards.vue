@@ -33,10 +33,17 @@
         .then((res) => {
           //store.apartments = res.data.apartments;
           // console.log(res.data.apartments);
-          console.log(res.data.sponsoredApartments);
+          console.log(res.data.apartments);
 
+          store.sponsoredApartments = res.data.apartments.filter((el) => {
+            console.log(el.isSponsored)
+            if (el.isSponsored) {
+              return el
+            }
+          })
+          // console.log(store.sponsoredApartments)
           this.isLoaded = true;
-          this.store.sponsoredApartments = res.data.sponsoredApartments;
+          // this.store.sponsoredApartments = res.data.sponsoredApartments;
         })
         .catch(function (error) {
           // handle error
