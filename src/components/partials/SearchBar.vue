@@ -139,7 +139,7 @@
   },
   mounted(){
     this.checkInputValue(decodeURIComponent(this.$route.query.query));
-    console.log(decodeURIComponent(this.$route.query.query));
+    // console.log(decodeURIComponent(this.$route.query.query));
   },
   computed:{
     
