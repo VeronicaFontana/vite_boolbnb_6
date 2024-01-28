@@ -28,43 +28,45 @@
 
 
 <template>
-  <div class="card mb-3 " style="max-width: 540px;">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <img
-            v-if="result.image"
-            :src="`http://127.0.0.1:8000/storage/${result.image}`"
-            onerror="this.src='/Placeholder.png'"
-            class="img-fluid rounded-start"
-            alt="..."
-          />
-          <!-- <img v-if="(result.appartamento.image)" :src="`http://127.0.0.1:8000/storage/`+result.appartamento.image" class="img-fluid rounded-start" alt="..."> -->
+  
 
-      
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">{{ result.title }}</h5>
-          <div class="row w-75" id="card-services">
-            <div class="col-3">
-              <span><i class="fa-solid fa-person-shelter"></i> {{ result.rooms }}</span><br>
-              <span>locali</span>
+
+  <div class="col-sm-12 col-md-6 col-lg-4 mb-4 p-2">
+  
+  <div class="card card-has-bg click-col" 
+        v-if="result.image"
+        :src="`http://127.0.0.1:8000/storage/${result.image}`"
+        onerror="this.src='/Placeholder.png'">
+
+        <div class="card-img-overlay d-flex flex-column">
+
+            <div class="card-body">
+              <small class="card-meta mb-2">{{ result.address }}</small>
+              <h4 class="card-title mt-2 ">{{ result.title }}</h4>
+            
             </div>
-            <div class="col-4 mx-2">
-              <span><i class="fa-solid fa-ruler-combined"></i> {{ result.square_meters }}m²</span><br>
-              <span>superficie</span>
+
+            <div class="card-footer">
+              <div class="media">
+                <div class="media-body">
+                    <div class="d-flex">
+                      <small class="m-1 col"><i class="fa-solid fa-person-shelter"></i> Stanze {{ result.rooms }} </small>
+                      <small class="m-1 col"><i class="fa-solid fa-bed"></i> Posi Letto {{ result.beds }} </small>
+                    </div>
+                    <div class="d-flex">
+                      <small class="m-1 col"><i class="fa-solid fa-restroom"></i> Bagni {{ result.bathrooms }} </small>
+                      <small class="m-1 col"><i class="fa-solid fa-ruler-combined"></i> Metri quadri {{ result.square_meters }}m²</small>
+                    </div>
+                  
+                </div>
+              </div>
             </div>
-            <div class="col-3">
-              <span><i class="fa-solid fa-bed"></i> {{ result.beds }}</span><br>
-              <span>letti</span>
-            </div>
-          </div>
-          <router-link  :to="{name: 'ApartmentDetail', params:{slug: result.slug}}">Vai all'appartamento</router-link>
-          <p class="card-text "><i class="fa-solid fa-location-dot location-pointer"></i> {{ formattedDistance(result.distance) }} km</p>
+
         </div>
+
       </div>
+
     </div>
-  </div>
 
 </template>
 
