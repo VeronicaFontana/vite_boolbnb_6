@@ -167,7 +167,7 @@
   
   <form>
     <router-link :to="{ name:'AdvanceSearch', query:{query: encodeURIComponent(this.inputSearch)} }" class="btn btn-outline-secondary" type="button" id="button-addon2" @click="saveData()">
-      <i class="fa-solid fa-magnifying-glass fa-bounce"></i>
+      Cerca
     </router-link>
   </form>
 </div>
@@ -175,5 +175,18 @@
 
 
 <style lang="scss"  scoped>
+@use '../../scss/partials/palette' as *;
+.btn{
+  background-color: $background-button;
+  color: $background-secondry-body;
+  border: 1px solid $background-secondry-body;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+    &:hover{
+      background-color: $background-button;
+      color: $background-secondry-body;
+      border: 1px solid $background-secondry-body;
+  }
+}
 
 </style>
