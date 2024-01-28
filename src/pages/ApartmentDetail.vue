@@ -128,9 +128,9 @@ import {store} from '../data/store';
         <p class="px-2 testo_secondario"><strong>Indirizzo</strong><em>: {{ apartmentSingle.address }}</em></p>
         <!-- BOX IMMAGINE -->
         <div class="box_img">
-          <!-- <img v-if="apartmentSingle.image"
+          <img v-if="apartmentSingle.image"
           :src="`http://127.0.0.1:8000/storage/${apartmentSingle.image}`"
-          onerror="this.src='/Placeholder.png'" alt=""> -->
+          onerror="this.src='/Placeholder.png'" alt="">
         </div>
 
       </div>
@@ -264,34 +264,31 @@ import {store} from '../data/store';
 .box_detailapartment{
   // margin-top: 110px;
   width: 95%;
-  margin: 0 auto;
+  margin: 110px auto 0 auto;
+  max-width: 950px;
+  .box_card{
+        width:100%;
+        padding: 10px 5px;
+        border-radius: 25px;
+        border: solid 1px gray;
+        overflow: hidden;
+          img{
+          max-height: 400px;
+          width: 100%;
+          aspect-ratio: 16/9;
+          object-fit: cover;
+        }
+        .testo_secondario{
+          font-size: 0.9rem;
+        }
+      }
   .col-10{
     // border: solid 1px black;
     // background-color: brown;
     .row{
       .col-8{
       // background-color: darkcyan;
-      .box_card{
-        height: 100%;
-        padding: 10px 5px;
-        border-radius: 25px;
-        border: solid 1px gray;
-
-        .testo_secondario{
-          font-size: 0.9rem;
-        }
-        .box_img{
-          width: 100%;
-          height: 400px;
-          background-color: $background-dark;
-          border-radius: 20px;
-          img{
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-          }
-        }
-      }
+      
 
       }
       .col-12{
@@ -349,7 +346,7 @@ import {store} from '../data/store';
       .box_mappa{
         width: 100%;
         height: 600px;
-        background-color: olive;
+        background-color: black;
         @media (max-width: 576px) {
           width: 90%;
           height: 400px;

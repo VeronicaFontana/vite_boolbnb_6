@@ -20,7 +20,7 @@ import SearchBar from './SearchBar.vue';
   <header>
     <div class="row align-content-center align-items-center justify-content-center pt-3 pt-xs-2 pt-sm-0">
       <div class="col-3 px-3">
-        <p>BoolB&B</p>
+        <router-link class="text-decoration-none" :to="{name:'home'}"><p>BoolB&B</p></router-link>
       </div>
 
       <div class="col-6 ">
@@ -56,6 +56,7 @@ header{
   width: 100%;
   top: 0;
   z-index: 998;
+  box-shadow: 0 0 8px 0px rgba(0,0,0,0.3);
   background-color:$background-primary-header;
   p{
   color:$background-button;
