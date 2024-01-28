@@ -30,9 +30,7 @@
 <template>
 
       <div class="col-12 col-md-6 col-lg-4 mb-4 p-2">
-        <div class="card card-has-bg click-col">
-        <img class="card-img" :src="`http://127.0.0.1:8000/storage/${result.image}`"
-        onerror="this.src='/Placeholder.png'">
+        <div class="card card-has-bg click-col" :style="{ backgroundImage: `url('http://127.0.0.1:8000/storage/${result.image}')`}">        
           <div class="card-img-overlay d-flex flex-column">
             <div class="card-body">
               <small class="card-meta mb-2">{{result.address}}</small>
