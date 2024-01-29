@@ -38,7 +38,7 @@
 </div> -->
 
 <!-- SECONDA CARTA PENSATA DI BOOTSTRAP -->
-<div class="col-sm-12 col-md-6 col-lg-4 mb-4 p-2">
+<div class="col-12 col-md-6 col-lg-4 mb-4 p-2">
   
   <div class="card card-has-bg click-col" :style="{ backgroundImage: `url('http://127.0.0.1:8000/storage/${apartment.image}')`}">
     <!-- <img class="card-img" :src="`http://127.0.0.1:8000/storage/${apartment.image}`"
