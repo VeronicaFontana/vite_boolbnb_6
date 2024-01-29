@@ -33,20 +33,20 @@
         <div class="card card-has-bg click-col" :style="{ backgroundImage: `url('http://127.0.0.1:8000/storage/${result.image}')`}">        
           <div class="card-img-overlay d-flex flex-column">
             <div class="card-body">
-              <small class="card-meta mb-2">{{result.address}}</small>
+              <small class="card-meta mb-2 fw-bold">{{result.address}}</small>
               <h4 class="card-title mt-2 ">{{result.title}}</h4>
-              <h3 class="distance"><i class="fa-solid fa-location-dot"></i> {{ formattedDistance(result.distance) }} km</h3>
+              <h3 class="distance"><i class="fa-solid fa-location-dot text-danger"></i> {{ formattedDistance(result.distance) }} km</h3>
             </div>
             <div class="card-footer">
               <div class="media">
-                <div class="media-body">
+                <div class="media-body text-center fw-bold fs-5">
                   <div class="d-flex">
                     <small class="m-1 col"><i class="fa-solid fa-person-shelter"></i> Stanze {{ result.rooms }} </small>
                     <small class="m-1 col"><i class="fa-solid fa-bed"></i> Posti letto {{ result.beds }} </small>
                   </div>
                   <div class="d-flex">
                     <small class="m-1 col"><i class="fa-solid fa-restroom"></i> Bagni {{ result.bathrooms }} </small>
-                    <small class="m-1 col"><i class="fa-solid fa-ruler-combined"></i> Metri quadri {{ result.square_meters }}m²</small>
+                    <small class="m-1 col"><i class="fa-solid fa-ruler-combined"></i> Superficie {{ result.square_meters }}m²</small>
                   </div>
                 </div>
               </div>
@@ -110,7 +110,7 @@
     // background-size:130%;
     background-size:210%;
     transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
-    .card-footer .media-body small{
+    .card-footer .media-body small, h4{
       color:white;
     }  
     
@@ -145,7 +145,7 @@
     font-weight:800
   }
   .card-meta{
-    color:rgba(0,0,0,0.3);
+    color:rgba(0, 0, 0, 0.654);
     text-transform:uppercase;
     font-weight:500;
     letter-spacing:2px;
