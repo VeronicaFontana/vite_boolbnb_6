@@ -219,11 +219,7 @@
     transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
     background: rgb(18, 15, 168);
     background: linear-gradient(0deg, rgba(40, 41, 40, 0) 0%, rgba(82, 82, 82, 0.308) 100%);
-    }
-
+  }
 }
 
-@media (max-width: 767px){
-  
-}
 </style>
