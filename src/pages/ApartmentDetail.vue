@@ -124,8 +124,8 @@ import {store} from '../data/store';
 
       <div class="box_card">
         <!--TITOLO APPARTAMENTO  -->
-        <h2 class="p-2">{{ apartmentSingle.title }}</h2>
-        <p class="px-2 testo_secondario fs-6"><i class="fa-solid fa-location-dot text-danger"></i> <em >{{ apartmentSingle.address }}</em></p>
+        <h2 class="px-3 pt-2">{{ apartmentSingle.title }}</h2>
+        <p class="px-3 testo_secondario fs-6"><i class="fa-solid fa-location-dot text-danger"></i> <em >{{ apartmentSingle.address }}</em></p>
         <!-- BOX IMMAGINE -->
         <div class="box_img">
           <img v-if="apartmentSingle.image"
@@ -199,24 +199,26 @@ import {store} from '../data/store';
     <div class="col-12">
       <div class="box_rooms d-flex justify-content-center align-items-baseline align-items-sm-center d-sm-flex justify-content-sm-center">
         <!--CAMERE E DATTAGLI DELL'APPARTAMENTO -->
-        <div class="row w-100 justify-content-center align-items-center flex-column flex-sm-row align-items-sm-center">
+        <div class="row py-3 gap-3 w-100 justify-content-center align-items-center flex-column flex-sm-row align-items-sm-center">
           <!-- Qua ciclerò i servizi ovviamente per adesso lo tengo cosi per una questione visiva -->
-          <div class="col">
-            <i class="fa-solid fa-person-shelter"></i>
-            <p><strong>{{ apartmentSingle.rooms }}</strong></p>
-            <h5>Stanze</h5>
+          <div class="col blur" id="rooms" :style="{ backgroundImage: `url('/public/rooms.jpg')`}">
+            <div> 
+              <i class="fa-solid fa-person-shelter"></i>
+              <p><strong>{{ apartmentSingle.rooms }}</strong></p>
+              <h5>Stanze</h5>
+            </div>
           </div>
-          <div class="col mx-sm-1">
+          <div class="col mx-sm-1" :style="{ backgroundImage: `url('/public/bedrooms.jpg')`}">
             <i class="fa-solid fa-bed"></i>
             <p><strong>{{apartmentSingle.beds}}</strong></p>
             <h5>Camere</h5>
           </div>
-          <div class="col me-sm-1">
+          <div class="col me-sm-1" :style="{ backgroundImage: `url('/public/bathrooms.jpg')`}">
             <i class="fa-solid fa-restroom"></i>
             <p><strong>{{apartmentSingle.bathrooms}}</strong></p>
             <h5>Bagni</h5>
           </div>
-          <div class="col">
+          <div class="col" :style="{ backgroundImage: `url('/public/square_meters.jpg')`}">
             <i class="fa-solid fa-ruler-combined"></i>
             <p><strong>{{apartmentSingle.square_meters}}m²</strong></p>
             <h5>Superficie</h5>
@@ -247,8 +249,8 @@ import {store} from '../data/store';
 
     <!-- MAPPA -->
     <div class="col-12">
-        <div class="box_mappa mx-auto my-2">
-          <div style="width: 100%; height: 100%;" id="map"></div>
+        <div class="box_mappa mx-auto my-4">
+          <div style="width: 100%; height: 100%; border-radius: 30px;" id="map"></div>
         </div>
     </div>
 
@@ -267,11 +269,12 @@ import {store} from '../data/store';
   max-width: 950px;
   .box_card{
     width:100%;
-    padding: 10px 5px;
     border-radius: 25px;
     border: solid 1px gray;
     overflow: hidden;
       img{
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
         max-height: 400px;
         width: 100%;
         aspect-ratio: 16/9;
@@ -292,25 +295,26 @@ import {store} from '../data/store';
   }
   .box_rooms{
     height: 200px;
-    margin: 20px 0;
+    margin: 0px 0;
     padding: 0 10px;
     border-radius: 25px;
-    border: solid 1px grey;
     @media (max-width: 576px) {
       height: auto;
           }
     .row{
       .col{
-        border: solid 1px black;
+        margin: 0 10px;
         border-radius: 25px;
         text-align: center;
         padding: 20px 0;
-        background-color: lightgrey;
+        background-size: 100%;
+        backdrop-filter: blur(3px);
+        -webkit-backdrop-filter: blur(3px);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.7);
         i{
           font-size: 2rem;
         }
       }
-
     }
   }
 
@@ -329,9 +333,10 @@ import {store} from '../data/store';
     .col-12{
       padding: 0 !important;
       .box_mappa{
+        border-radius: 30px;
         width: 100%;
         height: 600px;
-        background-color: black;
+        box-shadow: 0 0 10px rgb(144, 144, 144);
         @media (max-width: 576px) {
           width: 90%;
           height: 400px;
