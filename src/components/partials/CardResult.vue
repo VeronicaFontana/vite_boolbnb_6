@@ -35,6 +35,7 @@
             <div class="card-body">
               <small class="card-meta mb-2">{{result.address}}</small>
               <h4 class="card-title mt-2 ">{{result.title}}</h4>
+              <h3 class="distance"><i class="fa-solid fa-location-dot"></i> {{ formattedDistance(result.distance) }} km</h3>
             </div>
             <div class="card-footer">
               <div class="media">
@@ -151,12 +152,20 @@
   }
   .card-body{ 
     transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
+    position: relative;
+    .distance{
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      }
     }
 
   &:hover {
     .card-body{
       margin-top:30px;
       transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
+      
     }
   cursor: pointer;
   transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
