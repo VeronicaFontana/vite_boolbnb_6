@@ -125,7 +125,7 @@ import {store} from '../data/store';
       <div class="box_card">
         <!--TITOLO APPARTAMENTO  -->
         <h2 class="p-2">{{ apartmentSingle.title }}</h2>
-        <p class="px-2 testo_secondario"><strong>Indirizzo</strong><em>: {{ apartmentSingle.address }}</em></p>
+        <p class="px-2 testo_secondario fs-6"><i class="fa-solid fa-location-dot text-danger"></i> <em >{{ apartmentSingle.address }}</em></p>
         <!-- BOX IMMAGINE -->
         <div class="box_img">
           <img v-if="apartmentSingle.image"
@@ -142,13 +142,12 @@ import {store} from '../data/store';
         <h3>Informazioni sull'annuncio</h3>
         <ul class="list-unstyled">
           <li v-if="apartmentSingle.user.name || apartmentSingle.user.surname">
-            <p>Nome del proprietario: {{ apartmentSingle.user.name ?? '' }} {{ apartmentSingle.user.surname ?? '' }}</p>
+            <span><b>Nome del proprietario:</b></span><br>
+            <span>{{ apartmentSingle.user.name ?? '' }} {{ apartmentSingle.user.surname ?? '' }}</span>
           </li>
-          <li>
-            <p>Indirizzo email: {{ apartmentSingle.user.email }}</p>
-          </li>
-          <li>
-            <p>Appartamento inserito il {{ apartmentSingle.created_at ?? '' }}</p>
+          <li class="mt-3">
+            <span><b>Indirizzo email:</b></span><br>
+            <span>{{ apartmentSingle.user.email }}</span>
           </li>
         </ul>
         <!-- Qua ci andra l'offcanvas dell'invio del messaggio  -->
@@ -267,42 +266,28 @@ import {store} from '../data/store';
   margin: 110px auto 0 auto;
   max-width: 950px;
   .box_card{
-        width:100%;
-        padding: 10px 5px;
-        border-radius: 25px;
-        border: solid 1px gray;
-        overflow: hidden;
-          img{
-          max-height: 400px;
-          width: 100%;
-          aspect-ratio: 16/9;
-          object-fit: cover;
-        }
-        .testo_secondario{
-          font-size: 0.9rem;
-        }
+    width:100%;
+    padding: 10px 5px;
+    border-radius: 25px;
+    border: solid 1px gray;
+    overflow: hidden;
+      img{
+        max-height: 400px;
+        width: 100%;
+        aspect-ratio: 16/9;
+        object-fit: cover;
       }
-  .col-10{
-    // border: solid 1px black;
-    // background-color: brown;
-    .row{
-      .col-8{
-      // background-color: darkcyan;
-      
-
+      .testo_secondario{
+        font-size: 0.9rem;
       }
-      .col-12{
-        // background-color: darkorange;
-        .box_user{
-          height: fit;
-          background-color: gray;
-          border-radius: 25px;
-          margin:20px 0px;
-          @media (max-width: 576px) {
-            margin: 0;
-          }
-        }
-      }
+    }
+  .box_user{
+    height: fit;
+    background-color: $background-primary-header;
+    border-radius: 25px;
+    margin:20px 0px;
+    @media (max-width: 576px){
+      margin: 0;
     }
   }
   .box_rooms{
