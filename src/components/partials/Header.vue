@@ -38,8 +38,7 @@ import SearchBar from './SearchBar.vue';
           </ul>
         </div>
         
-        <router-link class="d-none d-sm-flex" :to="{name: 'home'}">Home</router-link>
-        <span class="px-3 d-none d-sm-flex"><a href="http://127.0.0.1:8000/login">Login <i class="fa-solid fa-arrow-right-to-bracket"></i></a></span>
+        <a href="http://127.0.0.1:8000/login" class="btn d-none d-sm-flex d-flex align-items-center" role="button">Login <i class="fa-solid fa-arrow-right-to-bracket ms-2"></i></a>
       </div>
     </div>
   </header>

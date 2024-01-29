@@ -31,33 +31,33 @@
 
       <div class="col-12 col-md-6 col-lg-4 mb-4 p-2">
         
-        <div class="card card-has-bg click-col" :style="{ backgroundImage: `url('http://127.0.0.1:8000/storage/${result.image}')`}">        
+        <router-link :to="`/apartment/${result.slug}`" class="card card-has-bg click-col" :style="{ backgroundImage: `url('http://127.0.0.1:8000/storage/${result.image}')`}">        
           <div class="card-img-overlay d-flex flex-column">
             <div class="card-body">
               <div class="blur">
-                <small class="card-meta mb-2"><i class="fa-solid fa-map-location-dot"></i>{{result.address}}</small>
+                <small class="card-meta mb-2 fw-bold"><i class="fa-solid fa-map-location-dot"></i>{{result.address}}</small>
                 <router-link class="text-decoration-none" :to="{name: 'ApartmentDetail', params:{slug: result.slug}}">
                 <h4 class="card-title mt-2 "><i class="fa-solid fa-house-user"></i>{{result.title}}</h4>
                 </router-link>
               </div>
-              <h3 class="distance"><i class="fa-solid fa-location-dot"></i> {{ formattedDistance(result.distance) }} km</h3>
+              <h3 class="distance"><i class="fa-solid fa-location-dot text-danger"></i> {{ formattedDistance(result.distance) }} km</h3>
             </div>
             <div class="card-footer">
               <div class="media">
-                <div class="media-body">
+                <div class="media-body text-center fw-bold fs-5">
                   <div class="d-flex">
                     <small class="m-1 col"><i class="fa-solid fa-person-shelter"></i> Stanze {{ result.rooms }} </small>
                     <small class="m-1 col"><i class="fa-solid fa-bed"></i> Posti letto {{ result.beds }} </small>
                   </div>
                   <div class="d-flex">
                     <small class="m-1 col"><i class="fa-solid fa-restroom"></i> Bagni {{ result.bathrooms }} </small>
-                    <small class="m-1 col"><i class="fa-solid fa-ruler-combined"></i> Metri quadri {{ result.square_meters }}m²</small>
+                    <small class="m-1 col"><i class="fa-solid fa-ruler-combined"></i> Superficie {{ result.square_meters }}m²</small>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </router-link>
       </div>
 
 </template>
