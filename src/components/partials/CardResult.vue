@@ -36,11 +36,9 @@
             <div class="card-body">
               <div class="blur">
                 <small class="card-meta mb-2 fw-bold"><i class="fa-solid fa-map-location-dot"></i>{{result.address}}</small>
-                <router-link class="text-decoration-none" :to="{name: 'ApartmentDetail', params:{slug: result.slug}}">
                 <h4 class="card-title mt-2 "><i class="fa-solid fa-house-user"></i>{{result.title}}</h4>
-                </router-link>
+                <h3 class="distance"><i class="fa-solid fa-location-dot text-danger"></i> {{ formattedDistance(result.distance) }} km</h3>
               </div>
-              <h3 class="distance"><i class="fa-solid fa-location-dot text-danger"></i> {{ formattedDistance(result.distance) }} km</h3>
             </div>
             <div class="card-footer">
               <div class="media">
@@ -183,8 +181,8 @@
     position: relative;
     .distance{
         position: absolute;
-        bottom: 0;
-        left: 50%;
+        bottom: 8px;
+        right:0;
         transform: translateX(-50%);
         i{
           color: rgb(236, 65, 13);
@@ -210,7 +208,7 @@
       margin-top:30px;
       transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
       h4{
-        color: $background-dark; 
+        color: $background-secondry-body; 
         text-shadow: 1px 1px rgba(0, 0, 0, 0.87);
       }
     }
