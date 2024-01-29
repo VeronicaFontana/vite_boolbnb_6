@@ -13,8 +13,16 @@
       timer:'',
       isLoaded: false,
       condizione: false,
+      list: this.input_list,
+      input_id: this.input_id
     }
   },
+  props:
+    [
+      'input_id', 
+      'input_list'
+    ]
+  ,
   components:{},
   methods:{
 
@@ -116,8 +124,8 @@
 
     saveData() {
       store.inputSearch = "";
-      let input = document.getElementById('input-search')
-      let datalist = document.getElementById('address-search-results')
+      let input = document.getElementById(this.input_id)
+      let datalist = document.getElementById(this.list)
       let options = document.getElementsByClassName('options')
       let isChoose = false;
 
@@ -157,11 +165,11 @@
   aria-label="Dove vuoi cercare?"
   aria-describedby="button-addon2"
   @keyup="checkTimer()"
-  id="input-search"
+  :id="input_id"
   v-model.trim="inputSearch"
-  list="address-search-results"
+  :list="input_list"
   >
-  <datalist  id="address-search-results">
+  <datalist  :id="input_list">
     <option v-for="address in this.mappedResults" :position="address.position" :lat="address.position.lat" :lon="address.position.lon" class="options" :key="address.id" v-on:click="testFunzione(address.string)" :value="address.string">{{address.string}}</option>
   </datalist>
   
