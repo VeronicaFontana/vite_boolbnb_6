@@ -18,17 +18,17 @@ import SearchBar from './SearchBar.vue';
 
 <template>
   <header>
-    <div class="row align-content-center align-items-center justify-content-center pt-3 pt-xs-2 pt-sm-0">
-      <div class="col-3 px-3">
-        <router-link class="text-decoration-none" :to="{name:'home'}"><p>BoolB&B</p></router-link>
+    <div class="row pt-xs-2 pt-sm-0">
+      <div class="col-3 align-items-center px-3">
+        <router-link class="text-decoration-none p-2 pt-3 " :to="{name:'home'}"><p>BoolB&B</p></router-link>
       </div>
 
       <div class="col-6 ">
-        <SearchBar class="d-none d-sm-flex"/>
+        <SearchBar :input_id="'input_search'" :input_list="'address-list'" class="d-none d-sm-flex"/>
       </div>
 
       <div class="col-3 align-items-center justify-content-center">
-        <div class="dropdown">
+        <div class="dropdown d-sm-none">
           <a class="btn btn-secondary" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <i class="fa-solid fa-bars"></i>
           </a>
@@ -38,8 +38,8 @@ import SearchBar from './SearchBar.vue';
           </ul>
         </div>
         
-        <span class="pe-3 d-none"><a href="http://127.0.0.1:8000/login">Login <i class="fa-solid fa-arrow-right-to-bracket"></i></a></span>
-        <router-link class="d-none" :to="{name: 'home'}">Home</router-link>
+        <router-link class="d-none d-sm-flex" :to="{name: 'home'}">Home</router-link>
+        <span class="px-3 d-none d-sm-flex"><a href="http://127.0.0.1:8000/login">Login <i class="fa-solid fa-arrow-right-to-bracket"></i></a></span>
       </div>
     </div>
   </header>
