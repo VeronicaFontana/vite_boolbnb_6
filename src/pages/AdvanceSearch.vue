@@ -133,6 +133,7 @@ import Loader from '../components/Loader.vue';
       </div>
     </div>
   </div>
+  
   <section class="filter-box">
     <div class="ms-2 h-100 d-flex align-items-center">
 
@@ -171,7 +172,20 @@ import Loader from '../components/Loader.vue';
 
         <!--RAGGIO -->
         <div class="radius-slider">
-          <input type="range" min="2000" max="100000" step="10000" name="radius" id="radius" value="20000" v-model="slider" @change="getApiNostra()">
+          <div class="row p-0 d-flex justify-content-between text-center">
+            <div class="col-1 p-0">&les;2</div>
+            <div class="col-1 p-0">10</div>
+            <div class="col-1 p-0">20</div>
+            <div class="col-1 p-0">30</div>
+            <div class="col-1 p-0">40</div>
+            <div class="col-1 p-0">50</div>
+            <div class="col-1 p-0">60</div>
+            <div class="col-1 p-0">70</div>
+            <div class="col-1 p-0">80</div>
+            <div class="col-1 p-0">90</div>
+            <div class="col-1 p-0">100</div>
+            <input type="range" min="0" max="100000" step="10000" name="radius" id="radius" value="20000" v-model="slider" @change="getApiNostra()">
+          </div>
         </div>
         <!--FINE RAGGIO -->
         
@@ -236,9 +250,25 @@ import Loader from '../components/Loader.vue';
   margin-top: 90px;
   height: 60px;
   background-color: lightgrey;
-
+    .btn{
+      background-color: $background-button;
+      color: $background-secondry-body;
+      border: 1px solid $background-secondry-body;
+      &:hover{
+        background-color: $background-button;
+      color: $background-secondry-body;
+      border: 1px solid $background-secondry-body;
+      }
+    }
   .dropdown{
     margin-right: 20px;
+  }
+  .radius-slider{
+    width: 200px;
+    .col-1{
+      color:black;
+      text-shadow: 1px 1px rgba(197, 191, 191, 0.87);
+    }
   }
 }
 .filter-box-responsive{

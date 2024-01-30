@@ -31,26 +31,17 @@ import Loader from './Loader.vue';
 
 <template>
   <div class="box_cardResult">
-
-
     <!-- <div class="results-box" v-if="store.servicesApartments.length > 0">
       <CardResult v-for="result in store.servicesApartments" :key="result.id" :result="result"/>
 
     </div> -->
-
     <section class="results-box" v-if="store.results.length > 0">
 
       <CardResult v-for="result in store.results" :key="result.id" :result="result"/>
 
     </section>
-
-
+    
     <h2 class="text-center " v-else >Non abbiamo nessun appartamento che soddisfi i tuoi criteri di ricerca &#9785;</h2>
-
-    
-
-
-    
 
     <!-- <section class="results-box" v-else>
       <CardFiltered  v-for="apartment in store.filteredApartments" :key="apartment" :apartment="apartment" />

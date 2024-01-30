@@ -136,10 +136,10 @@ import {store} from '../data/store';
       </div>
 
     </div>
-
+    <!-- BOX MESSAGGIO D'INVIO -->
     <div class="col-sm-4">
-      <div class="box_user p-4 text-center">
-        <h3>Informazioni sull'annuncio</h3>
+      <div class="box_user px-4 text-center">
+        <h2>Informazioni sull'annuncio</h2>
         <ul class="list-unstyled">
           <li v-if="apartmentSingle.user.name || apartmentSingle.user.surname">
             <span><b>Nome del proprietario:</b></span><br>
@@ -179,7 +179,7 @@ import {store} from '../data/store';
                   <p class="error" v-for="error in errors.message" :key="error.id">{{ error }}</p>
                 </div>
                 <!-- BOTTONE DELL'INVIO FORM MESSAGE -->
-                <div>
+                <div class="button">
                   <button class="btn btn-light my-3" type="submit">Invia</button>
                 </div>
             </div>
@@ -188,7 +188,6 @@ import {store} from '../data/store';
           <!-- ------------------------- -->
           <div v-else>Email inviata correttamente</div>
         </form>
-        
         <!-- Il form si chiude qui -->
 
         <button class="btn btn-success" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Chiedi informazioni</button>
@@ -201,27 +200,33 @@ import {store} from '../data/store';
         <!--CAMERE E DATTAGLI DELL'APPARTAMENTO -->
         <div class="row py-3 gap-3 w-100 justify-content-center align-items-center flex-column flex-sm-row align-items-sm-center">
           <!-- Qua ciclerò i servizi ovviamente per adesso lo tengo cosi per una questione visiva -->
-          <div class="col blur" id="rooms" :style="{ backgroundImage: `url('/public/rooms.jpg')`}">
-            <div> 
+          <div class="col rooms" :style="{ backgroundImage: `url('/public/rooms.jpg')`}">
+            <div class="blur"> 
               <i class="fa-solid fa-person-shelter"></i>
               <p><strong>{{ apartmentSingle.rooms }}</strong></p>
               <h5>Stanze</h5>
             </div>
           </div>
-          <div class="col mx-sm-1" :style="{ backgroundImage: `url('/public/bedrooms.jpg')`}">
-            <i class="fa-solid fa-bed"></i>
-            <p><strong>{{apartmentSingle.beds}}</strong></p>
-            <h5>Camere</h5>
+          <div class="col beds" :style="{ backgroundImage: `url('/public/bedrooms.jpg')`}">
+            <div class="blur">
+              <i class="fa-solid fa-bed"></i>
+              <p><strong>{{apartmentSingle.beds}}</strong></p>
+              <h5>Camere</h5>
+            </div>
           </div>
-          <div class="col me-sm-1" :style="{ backgroundImage: `url('/public/bathrooms.jpg')`}">
-            <i class="fa-solid fa-restroom"></i>
-            <p><strong>{{apartmentSingle.bathrooms}}</strong></p>
-            <h5>Bagni</h5>
+          <div class="col bathrooms" :style="{ backgroundImage: `url('/public/bathrooms.jpg')`}">
+            <div class="blur">
+              <i class="fa-solid fa-restroom"></i>
+              <p><strong>{{apartmentSingle.bathrooms}}</strong></p>
+              <h5>Bagni</h5>
+            </div>
           </div>
-          <div class="col" :style="{ backgroundImage: `url('/public/square_meters.jpg')`}">
-            <i class="fa-solid fa-ruler-combined"></i>
-            <p><strong>{{apartmentSingle.square_meters}}m²</strong></p>
-            <h5>Superficie</h5>
+          <div class="col square_meters" :style="{ backgroundImage: `url('/public/square_meters.jpg')`}">
+            <div class="blur">
+              <i class="fa-solid fa-ruler-combined"></i>
+              <p><strong>{{apartmentSingle.square_meters}}m²</strong></p>
+              <h5>Superficie</h5>
+            </div>
           </div>
 
         </div>
@@ -266,12 +271,20 @@ import {store} from '../data/store';
   // margin-top: 110px;
   width: 95%;
   margin: 110px auto 0 auto;
-  max-width: 950px;
+  max-width: 1200px;
+  i{
+    color:black;
+    text-shadow: 1px 1px rgba(197, 191, 191, 0.87);
+  }
   .box_card{
     width:100%;
     border-radius: 25px;
     border: solid 1px gray;
     overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 10px rgb(144, 144, 144);
+    color:black;
+    text-shadow: 1px 1px rgba(197, 191, 191, 0.87);
       img{
         border-bottom-left-radius: 10px;
         border-bottom-right-radius: 10px;
@@ -285,36 +298,73 @@ import {store} from '../data/store';
       }
     }
   .box_user{
-    height: fit;
+    height: 100%;
     background-color: $background-primary-header;
     border-radius: 25px;
-    margin:20px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    color:black;
+    text-shadow: 1px 1px rgba(197, 191, 191, 0.87);
+    border: solid 1px gray;
+    box-shadow: 0 0 10px rgb(144, 144, 144);
+    h2{
+      letter-spacing: 0.5px;
+    }
     @media (max-width: 576px){
       margin: 0;
     }
-  }
+      .btn{
+      background-color: $background-button;
+      color: $background-secondry-body;
+      border: 1px solid $background-secondry-body;
+      align-self: center;
+        &:hover{
+          background-color: $background-button;
+          color: $background-secondry-body;
+          border: 1px solid $background-secondry-body;
+        }
+      }
+      .button{
+        display: contents;
+      }
+    }
   .box_rooms{
     height: 200px;
     margin: 0px 0;
     padding: 0 10px;
     border-radius: 25px;
+    color:black;
+    text-shadow: 1px 1px rgba(197, 191, 191, 0.87);
     @media (max-width: 576px) {
       height: auto;
           }
     .row{
       .col{
-        margin: 0 10px;
         border-radius: 25px;
+        padding: 0px;
         text-align: center;
-        padding: 20px 0;
-        background-size: 100%;
-        backdrop-filter: blur(3px);
-        -webkit-backdrop-filter: blur(3px);
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.7);
         i{
           font-size: 2rem;
         }
       }
+      .rooms{
+        background-size: 100%;
+        background-position-y: -40px;
+        }
+      .beds{
+        background-size: 100%;
+        background-position-y: -75px;
+        }
+      .bathrooms{
+        background-size: 100%;
+        background-position-y: -125px;
+        }
+      .square_meters{
+        background-size: 100%;
+        background-position-y: 3px;
+        }
     }
   }
 
@@ -326,6 +376,12 @@ import {store} from '../data/store';
     background-color: lightgrey;
     width: 93%;
     margin: 0 auto;
+    color:black;
+    text-shadow: 1px 1px rgba(197, 191, 191, 0.87);
+    i{
+          font-size: 1.1rem;
+          padding: 0 5px;
+        }
   }
 
 
@@ -343,6 +399,16 @@ import {store} from '../data/store';
           }
       }
     }
+  }
+  .blur{
+    // margin: 0px 70px;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    background-size: 100%;
+    backdrop-filter: blur(1.2px);
+    padding: 20px 0;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.7);
   }
 }
 </style>
