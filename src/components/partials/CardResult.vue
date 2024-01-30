@@ -33,6 +33,9 @@
         
         <router-link :to="`/apartment/${result.slug}`" class="card card-has-bg click-col" :style="{ backgroundImage: `url('http://127.0.0.1:8000/storage/${result.image}')`}">        
           <div class="card-img-overlay d-flex flex-column">
+            <div v-if="result.isSponsored" class="bg-warning w-50 text-center rounded-3" style="transform: skewY(-10deg); position: relative; left: -15px;">
+              <span class="text-white fw-bold">Sponsorizzato</span>
+            </div>
             <div class="card-body">
               <div class="blur">
                 <small class="card-meta mb-2 fw-bold"><i class="fa-solid fa-map-location-dot"></i>{{result.address}}</small>
@@ -138,8 +141,8 @@
       transition: all 1.2s cubic-bezier(0.19, 1, 0.22, 1);
       background: rgb(2, 1, 0);
       background: linear-gradient(0deg, rgba(211, 166, 126, 0.26) 0%, rgba(37, 37, 36, 0.404) 100%);
-      }
     }
+  }
 }
   .card-footer{
     // background: none;

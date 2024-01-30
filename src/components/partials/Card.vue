@@ -42,6 +42,9 @@
   
   <router-link :to="`/apartment/${apartment.slug}`" class="card card-has-bg click-col" :style="{ backgroundImage: `url('http://127.0.0.1:8000/storage/${apartment.image}')`}">        
     <div class="card-img-overlay d-flex flex-column">
+      <div v-if="apartment.isSponsored" class="bg-warning w-50 text-center rounded-3" style="transform: skewY(-10deg); position: relative; left: -15px;">
+              <span class="text-white fw-bold">Sponsorizzato</span>
+            </div>
       <div class="card-body">
         <div class="blur">
           <small class="card-meta mb-2 fw-bold"><i class="fa-solid fa-map-location-dot"></i>{{apartment.address}}</small>
