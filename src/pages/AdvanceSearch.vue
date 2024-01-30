@@ -229,7 +229,7 @@ import Loader from '../components/Loader.vue';
 
         <!--RAGGIO -->
         <div class="radius-slider">
-          <input type="range" min="2000" max="100000" step="10000" name="radius" id="radius" value="20000" v-model="slider" @change="getApiNostra()">
+          <input type="range" min="0" max="100000" step="10000" name="radius" id="radius" value="20000" v-model="slider" @change="getApiNostra()">
         </div>
         <!--FINE RAGGIO -->
         
@@ -268,6 +268,9 @@ import Loader from '../components/Loader.vue';
     .col-1{
       color:black;
       text-shadow: 1px 1px rgba(197, 191, 191, 0.87);
+    }
+    input{
+      padding: 0;
     }
   }
 }
