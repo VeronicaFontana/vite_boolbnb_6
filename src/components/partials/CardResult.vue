@@ -29,7 +29,7 @@
 
 <template>
 
-      <div class="col-12 col-md-6 col-lg-4 mb-4 p-2">
+      <div class="col-12 col-md-6 col-lg-4 mb-4 p-2" :class=" (result.isSponsored) ? 'order-1' : 'order-2' " >
         
         <router-link :to="`/apartment/${result.slug}`" class="card card-has-bg click-col" :style="{ backgroundImage: `url('http://127.0.0.1:8000/storage/${result.image}')`}">        
           <div class="card-img-overlay d-flex flex-column">
@@ -69,7 +69,9 @@
 @use '../../scss/partials/palette' as *;
 
 //post card styles
-
+.sponsored{
+  order: 0;
+}
 .card{
   border: none;
   transition: all 900ms cubic-bezier(0.19, 1, 0.22, 1);
