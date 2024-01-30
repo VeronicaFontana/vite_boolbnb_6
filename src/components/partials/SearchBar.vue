@@ -174,7 +174,7 @@
   </datalist>
   
   <form>
-    <router-link :to="{ name:'AdvanceSearch', query:{query: encodeURIComponent(this.inputSearch)} }" class="btn btn-outline-secondary" type="button" id="button-addon2" @click="saveData()">
+    <router-link :to="{ name:'AdvanceSearch', query:{query: encodeURIComponent(this.inputSearch)} }" class="btn_custom" type="button" id="button-addon2" @click="saveData()">
       Cerca
     </router-link>
   </form>
@@ -184,7 +184,10 @@
 
 <style lang="scss"  scoped>
 @use '../../scss/partials/palette' as *;
-.btn{
+.btn_custom{
+text-decoration: none;
+  padding: 6px;
+ border-radius: 0px 8px 8px 0px;
   background-color: $background-button;
   color: $background-secondry-body;
   border: 1px solid $background-secondry-body;

@@ -18,27 +18,30 @@ import SearchBar from './SearchBar.vue';
 
 <template>
   <header>
-    <div class="row pt-xs-2 pt-sm-0">
-      <div class="col-3 align-items-center px-3">
-        <router-link class="text-decoration-none p-2 pt-3 " :to="{name:'home'}"><p>BoolB&B</p></router-link>
-      </div>
+    <div class="container">
 
-      <div class="col-6 ">
-        <SearchBar :input_id="'input_search'" :input_list="'address-list'" class="d-none d-sm-flex"/>
-      </div>
-
-      <div class="col-3 align-items-center justify-content-center">
-        <div class="dropdown d-sm-none">
-          <a class="btn btn-secondary" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="fa-solid fa-bars"></i>
-          </a>
-
-          <ul class="dropdown-menu">
-            <li class="d-flex"><a class="dropdown-item" href="http://127.0.0.1:8000/login">Login<i class="fa-solid fa-arrow-right-to-bracket"></i></a></li>
-          </ul>
+      <div class="row pt-xs-2 pt-sm-0">
+        <div class="col-3 align-items-center">
+          <router-link class="text-decoration-none p-2 pt-3 " :to="{name:'home'}"><p>BoolB&B</p></router-link>
         </div>
-        
-        <a href="http://127.0.0.1:8000/login" class="btn d-none d-sm-flex d-flex align-items-center" role="button">Login <i class="fa-solid fa-arrow-right-to-bracket ms-2"></i></a>
+  
+        <div class="col-6 ">
+          <SearchBar :input_id="'input_search'" :input_list="'address-list'" class="d-none d-sm-flex"/>
+        </div>
+  
+        <div class="col-3 align-items-center justify-content-end">
+          <div class="dropdown d-sm-none">
+            <a class="btn btn-secondary" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa-solid fa-bars"></i>
+            </a>
+  
+            <ul class="dropdown-menu">
+              <li class="d-flex"><a class="dropdown-item" href="http://127.0.0.1:8000/login">Login<i class="fa-solid fa-arrow-right-to-bracket"></i></a></li>
+            </ul>
+          </div>
+          
+          <a href="http://127.0.0.1:8000/login" class="btn d-none d-sm-flex d-flex align-items-center" role="button">Login <i class="fa-solid fa-arrow-right-to-bracket ms-2"></i></a>
+        </div>
       </div>
     </div>
   </header>
@@ -57,6 +60,14 @@ header{
   z-index: 998;
   box-shadow: 0 0 8px 0px rgba(0,0,0,0.3);
   background-color:$background-primary-header;
+
+  .dropdown{
+    .btn{
+      background-color: $background-button;
+      color: $background-secondry-body;
+      border: 1px solid $background-secondry-body;
+    }
+  }
   p{
   color:$background-button;
   font-size: 2.3rem;
@@ -71,6 +82,7 @@ header{
 .btn{
   padding: 10px;
   background-color:$background-button;
+  
   i{
     font-size: 1.5rem;
   }
