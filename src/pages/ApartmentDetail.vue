@@ -17,22 +17,30 @@ import {store} from '../data/store';
         email:[],
         message:[],
       },
-      map: ''
+      map: '',
+      singleApartment: '',
+      poiArray: [],
     }
   },
   components:{
   },
   methods:{
+
     getSingleApartment(slug){
       axios.get(store.apiSingleAparment + slug)
       .then(res=>{
         store.apartmentSingle = res.data;
-        console.log(res.data);
+        this.singleApartment = res.data.apartment[0].id;
+        console.log(res.data.apartment[0].id);
+        // console.log(this.singleApartment);
+
+        this.getPOIs();
       })
       .catch(error => {
         console.error('Errore nella chiamata API:', error);
       });
     },
+
     formatDate(){
       let newDate = new Date();
       let year =  newDate.getFullYear();
@@ -49,36 +57,63 @@ import {store} from '../data/store';
 
       this.dateString = year + '-' + formattedMonth + '-' + formattedDay;
     },
+
     sendMessageUser(){
       const data = {
         full_name: this.full_name,
         email: this.email,
         message: this.message,
         date: this.dateString,
+        apartment_id: this.singleApartment
       }
       axios.post(store.apiUrlSendMessage + 'send-message', data)
       .then(res=>{
+
         console.log(store.apiUrlSendMessage +'send-message', data);
         console.log(res.data);
         this.success = res.data.success;
+
         if(!this.success){
-          this.errors = res.data.errors;
-        console.log(this.errors);
+          this.errors = res.data.success;
+          console.log(this.errors);
         }else{
-            // Resetta i campi del form
-            console.log('Reset dei campi del form');
-            this.full_name = '';
-            this.email = '';
-            this.message = '';
-            this.errors = {};
-          }
+          this.closeOffcanvas();
+        }
+
       })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      
     },
 
+    closeOffcanvas() {
+      // Chiudi l'offcanvas impostando aria-hidden su true
+      const offcanvas = document.getElementById('offcanvasRight');
+      const offcanvasBackdrop = document.getElementsByClassName('offcanvas-backdrop');
+      console.log(offcanvasBackdrop)
+
+
+      for (const offcanvasBackdropEl of offcanvasBackdrop) {
+        offcanvasBackdropEl.classList.remove('show')
+      }
+
+
+      offcanvas.setAttribute('aria-hidden', 'true');
+      offcanvas.classList.remove('show');
+      // document.body.classList.remove('offcanvas-backdrop');
+
+      // Puoi anche pulire il form qui se necessario
+      this.full_name = '';
+      this.email = '';
+      this.message = '';
+      this.errors = {};
+    },
 
     getMap() {
       setTimeout(() => {
-        console.log(store.apartmentSingle.apartment[0].lat)
+        // console.log(store.apartmentSingle.apartment[0].lat)
         let mapElement = document.createElement('div');
         // mapElement.innerHTML = 'alfonso'
         // document.getElementById('box_mappa').appendChild(mapElement)
@@ -103,11 +138,30 @@ import {store} from '../data/store';
       }, 1000)
 
     },
+
+    getPOIs() {
+      axios.get(store.apiNearby, {
+        params: {
+          key: store.apiKey,
+          lat: store.apartmentSingle.apartment[0].lat,
+          lon: store.apartmentSingle.apartment[0].lng,
+      }})
+      .then(res => {
+        console.log(res.data.results)
+        this.poiArray = res.data.results
+      })
+    }
+
+
   },
   mounted(){
     this.getSingleApartment(this.$route.params.slug);
     this.formatDate();
     this.getMap();
+
+    
+
+    console.log(store.apartmentSingle.apartment);
   },
   computed:{}
   }
@@ -180,7 +234,8 @@ import {store} from '../data/store';
                 </div>
                 <!-- BOTTONE DELL'INVIO FORM MESSAGE -->
                 <div class="button">
-                  <button class="btn btn-light my-3" type="submit">Invia</button>
+                  <button class="btn btn-light my-3" v-if="!this.success" type="submit"> <u>Invia</u> </button>
+                  <button class="btn btn-light my-3" v-else data-bs-dismiss="offcanvas" data-bs-target="#offcanvasRight" type="submit">Invia</button>
                 </div>
             </div>
           </div>
@@ -235,20 +290,31 @@ import {store} from '../data/store';
 
     <!-- SERVIZI -->
     <div class="col-12">
-      <div class="box_service d-flex justify-content-center">
+      <div class="box_service row d-flex justify-content-center">
         <!-- sara la riga dei servizi -->
-        <div class="row">
-          <div class="col-3 d-flex align-items-center">
-            <h3>Servizi:</h3>
-          </div>
+
+        <div class="col">
+          <h3>Vicino troverai:</h3>
+          <ul class="fa-ul">
+            <li v-for="element in this.poiArray" :key="element.id" class="poi-list-item">
+              <span class="fa-li"><i class="fa-solid fa-location-dot text-danger"></i></span>
+              <span>{{element.poi.name}} || {{parseInt(element.dist)}} km</span>
+            </li>
+          </ul>
+        </div>
+        <div class="col text-center">
+
+          <h3>Servizi:</h3>
+
           <div class="col-9 d-flex align-items-center p-0">
-            <ul class="d-flex flex-wrap m-0">
+            <ul class="d-flex flex-wrap m-0 ">
               <li class="list-unstyled px-3" v-for="service in apartmentSingle.services" :key="service"><i :class="service.icon"></i> {{ service.name }}</li>
             </ul>
           </div>
+        </div>
           
 
-        </div>
+
       </div>
     </div>
 
@@ -379,9 +445,16 @@ import {store} from '../data/store';
     color:black;
     text-shadow: 1px 1px rgba(197, 191, 191, 0.87);
     i{
-          font-size: 1.1rem;
-          padding: 0 5px;
-        }
+      font-size: 1.1rem;
+      padding: 0 5px;
+    } 
+    .poi-list-item {
+
+      i  {
+        
+        vertical-align: middle;
+      }
+    }
   }
 
 
