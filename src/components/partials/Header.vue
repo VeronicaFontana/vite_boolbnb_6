@@ -36,11 +36,11 @@ import SearchBar from './SearchBar.vue';
             </a>
   
             <ul class="dropdown-menu">
-              <li class="d-flex"><a class="dropdown-item" href="http://127.0.0.1:8000/login">Login<i class="fa-solid fa-arrow-right-to-bracket"></i></a></li>
+              <li class="d-flex"><a class="dropdown-item" href="http://127.0.0.1:8000/login" target="_blank">Accedi<i class="fa-solid fa-arrow-right-to-bracket"></i></a></li>
             </ul>
           </div>
           
-          <a href="http://127.0.0.1:8000/login" class="btn d-none d-sm-flex d-flex align-items-center" role="button">Login <i class="fa-solid fa-arrow-right-to-bracket ms-2"></i></a>
+          <a href="http://127.0.0.1:8000/login" class="btn d-none d-sm-flex d-flex align-items-center" target="_blank" role="button">Accedi <i class="fa-solid fa-arrow-right-to-bracket ms-2"></i></a>
         </div>
       </div>
     </div>
