@@ -241,7 +241,7 @@ import {store} from '../data/store';
           </div>
           
           <!-- ------------------------- -->
-          <div v-else>Email inviata correttamente</div>
+          <div class="badge py-3 px-5" v-else>Email inviata correttamente</div>
         </form>
         <!-- Il form si chiude qui -->
 
@@ -298,7 +298,7 @@ import {store} from '../data/store';
           <ul class="fa-ul">
             <li v-for="element in this.poiArray" :key="element.id" class="poi-list-item">
               <span class="fa-li"><i class="fa-solid fa-location-dot text-danger"></i></span>
-              <span>{{element.poi.name}} || {{parseInt(element.dist)}} km</span>
+              <span>{{element.poi.name}} || {{parseInt(element.dist)}} mt</span>
             </li>
           </ul>
         </div>
@@ -481,5 +481,9 @@ import {store} from '../data/store';
     padding: 20px 0;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.7);
   }
+}
+.badge{
+  background: $background-button;
+  color: $background-secondry-body;
 }
 </style>
