@@ -345,7 +345,6 @@ import {store} from '../data/store';
   .box_card{
     width:100%;
     border-radius: 25px;
-    border: solid 1px gray;
     overflow: hidden;
     background-color: rgba(255, 255, 255, 0.5);
     box-shadow: 0 0 10px rgb(144, 144, 144);
@@ -372,7 +371,6 @@ import {store} from '../data/store';
     justify-content: space-evenly;
     color:black;
     text-shadow: 1px 1px rgba(197, 191, 191, 0.87);
-    border: solid 1px gray;
     box-shadow: 0 0 10px rgb(144, 144, 144);
     h2{
       letter-spacing: 0.5px;
@@ -438,7 +436,7 @@ import {store} from '../data/store';
     margin-bottom: 20px;
     min-height: 100px;
     border-radius: 25px;
-    border: solid 1px gray;
+    padding: 15px;
     background-color: lightgrey;
     width: 93%;
     margin: 0 auto;
