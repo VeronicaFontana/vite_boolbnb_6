@@ -80,7 +80,7 @@ header{
   }
 
 .btn{
-  padding: 10px;
+  padding: 10px 15px;
   background-color:$background-button;
   
   i{
