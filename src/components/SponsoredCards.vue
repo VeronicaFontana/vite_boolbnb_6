@@ -62,7 +62,7 @@
 
 <template>
 
-  <div class="container">
+  <div class="container my-3">
     <h2 class="my-2 text-center text-sm-start">Appartamenti in Evidenza</h2>
     <div class="box_structure d-sm-flex flex-sm-wrap">
       <Card v-for="apartment in store.sponsoredApartments" :key="apartment.id" :apartment="apartment" />
