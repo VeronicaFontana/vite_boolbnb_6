@@ -22,7 +22,7 @@ import SearchBar from './SearchBar.vue';
 
       <div class="row pt-xs-2 pt-sm-0">
         <div class="col-3 align-items-center">
-          <router-link class="text-decoration-none p-2 pt-3 " :to="{name:'home'}"><p>BoolB&B</p></router-link>
+          <router-link class="text-decoration-none" :to="{name:'home'}"><img style="" src="/image.png"  alt=""></router-link>
         </div>
   
         <div class="col-6 ">
@@ -80,7 +80,7 @@ header{
   }
 
 .btn{
-  padding: 10px;
+  padding: 10px 15px;
   background-color:$background-button;
   
   i{
