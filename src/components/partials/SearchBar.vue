@@ -186,7 +186,7 @@
 @use '../../scss/partials/palette' as *;
 .btn_custom{
 text-decoration: none;
-  padding: 6px;
+  padding: 8px;
  border-radius: 0px 8px 8px 0px;
   background-color: $background-button;
   color: $background-secondry-body;
