@@ -193,10 +193,10 @@ import {store} from '../data/store';
     <!-- BOX MESSAGGIO D'INVIO -->
     <div class="col-sm-4">
       <div class="box_user px-4 text-center">
-        <h2>Informazioni sull'annuncio</h2>
+        <h2>Informazioni sul proprietario</h2>
         <ul class="list-unstyled">
           <li v-if="apartmentSingle.user.name || apartmentSingle.user.surname">
-            <span><b>Nome del proprietario:</b></span><br>
+            <span><b>Nome:</b></span><br>
             <span>{{ apartmentSingle.user.name ?? '' }} {{ apartmentSingle.user.surname ?? '' }}</span>
           </li>
           <li class="mt-3">
