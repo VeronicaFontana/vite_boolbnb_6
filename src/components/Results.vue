@@ -67,6 +67,8 @@ import Loader from './Loader.vue';
     flex-wrap: wrap;
     justify-content: space-around;
     padding: 10px;
+    max-width: 1700px;
+    margin: 0 auto;
   }
 }
 h2{
