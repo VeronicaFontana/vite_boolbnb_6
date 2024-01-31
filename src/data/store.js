@@ -22,7 +22,6 @@ export const store = reactive({
     beds: 0,
     services: []
   },
-  apiFilter: "http://127.0.0.1:8000/filtered-apartments",
   filteredApartments: [] ,
   inputSearch: "",
   apiTest:'http://127.0.0.1:8000/api/test-api/',
