@@ -298,7 +298,7 @@ import {store} from '../data/store';
           <ul class="fa-ul">
             <li v-for="element in this.poiArray" :key="element.id" class="poi-list-item">
               <span class="fa-li"><i class="fa-solid fa-location-dot text-danger"></i></span>
-              <span>{{element.poi.name}} || {{parseInt(element.dist)}} km</span>
+              <span>{{element.poi.name}} || {{parseInt(element.dist)}} mt</span>
             </li>
           </ul>
         </div>
