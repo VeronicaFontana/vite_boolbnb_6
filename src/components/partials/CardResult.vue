@@ -40,7 +40,7 @@
               <div class="blur">
                 <small class="card-meta mb-2 fw-bold"><i class="fa-solid fa-map-location-dot"></i>{{result.address}}</small>
                 <h4 class="card-title mt-2 "><i class="fa-solid fa-house-user"></i>{{result.title}}</h4>
-                <h3 class="distance"><i class="fa-solid fa-location-dot text-danger"></i> {{ formattedDistance(result.distance) }} km</h3>
+                <h5 class="distance"><i class="fa-solid fa-location-dot text-danger"></i> {{ formattedDistance(result.distance) }} km</h5>
               </div>
             </div>
             <div class="card-footer">
@@ -52,7 +52,7 @@
                   </div>
                   <div class="d-flex">
                     <small class="m-1 col"><i class="fa-solid fa-restroom"></i> Bagni {{ result.bathrooms }} </small>
-                    <small class="m-1 col"><i class="fa-solid fa-ruler-combined"></i> Superficie {{ result.square_meters }}m²</small>
+                    <small class="m-1 col"><i class="fa-solid fa-ruler-combined"></i> {{ result.square_meters }}m²</small>
                   </div>
                 </div>
               </div>
@@ -183,12 +183,9 @@
   }
   .card-body{ 
     transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
-    position: relative;
     .distance{
-        position: absolute;
-        bottom: 8px;
-        right:0;
-        transform: translateX(-50%);
+    font-size: 1.4rem;
+    font-weight: 700;
         i{
           color: rgb(236, 65, 13);
         }
