@@ -60,7 +60,7 @@
             </div>
             <div class="d-flex">
               <small class="m-1 col"><i class="fa-solid fa-restroom"></i> Bagni {{ apartment.bathrooms }} </small>
-              <small class="m-1 col"><i class="fa-solid fa-ruler-combined"></i> Superficie {{ apartment.square_meters }}m²</small>
+              <small class="m-1 col"><i class="fa-solid fa-ruler-combined"></i> {{ apartment.square_meters }}m²</small>
             </div>
           </div>
         </div>
