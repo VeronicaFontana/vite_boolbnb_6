@@ -22,7 +22,7 @@ import SearchBar from './SearchBar.vue';
 
       <div class="row pt-xs-2 pt-sm-0">
         <div class="col-3 align-items-center">
-          <router-link class="text-decoration-none p-2 pt-3 " :to="{name:'home'}"><p>BoolB&B</p></router-link>
+          <router-link class="text-decoration-none" :to="{name:'home'}"><img style="" src="/image.png"  alt=""></router-link>
         </div>
   
         <div class="col-6 ">
@@ -36,11 +36,11 @@ import SearchBar from './SearchBar.vue';
             </a>
   
             <ul class="dropdown-menu">
-              <li class="d-flex"><a class="dropdown-item" href="http://127.0.0.1:8000/login">Login<i class="fa-solid fa-arrow-right-to-bracket"></i></a></li>
+              <li class="d-flex"><a class="dropdown-item" href="http://127.0.0.1:8000/login" target="_blank">Accedi<i class="fa-solid fa-arrow-right-to-bracket"></i></a></li>
             </ul>
           </div>
           
-          <a href="http://127.0.0.1:8000/login" class="btn d-none d-sm-flex d-flex align-items-center" role="button">Login <i class="fa-solid fa-arrow-right-to-bracket ms-2"></i></a>
+          <a href="http://127.0.0.1:8000/login" class="btn d-none d-sm-flex d-flex align-items-center" target="_blank" role="button">Accedi <i class="fa-solid fa-arrow-right-to-bracket ms-2"></i></a>
         </div>
       </div>
     </div>
@@ -80,7 +80,7 @@ header{
   }
 
 .btn{
-  padding: 10px;
+  padding: 10px 15px;
   background-color:$background-button;
   
   i{

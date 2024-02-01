@@ -174,17 +174,12 @@ import Loader from '../components/Loader.vue';
         <div class="radius-slider">
           <div class="row p-0 d-flex justify-content-between text-center">
             <div class="col-1 p-0">&les;2</div>
-            <div class="col-1 p-0">10</div>
             <div class="col-1 p-0">20</div>
-            <div class="col-1 p-0">30</div>
             <div class="col-1 p-0">40</div>
-            <div class="col-1 p-0">50</div>
             <div class="col-1 p-0">60</div>
-            <div class="col-1 p-0">70</div>
             <div class="col-1 p-0">80</div>
-            <div class="col-1 p-0">90</div>
             <div class="col-1 p-0">100</div>
-            <input type="range" min="0" max="100000" step="10000" name="radius" id="radius" value="20000" v-model="slider" @change="getApiNostra()">
+            <input type="range" min="0" max="100000" step="20000" name="radius" id="radius" value="20000" v-model="slider" @change="getApiNostra()">
           </div>
         </div>
         <!--FINE RAGGIO -->
@@ -237,6 +232,7 @@ import Loader from '../components/Loader.vue';
     </div>
   </section>
 
+  
   <Results />
 
 </template>

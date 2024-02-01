@@ -193,10 +193,10 @@ import {store} from '../data/store';
     <!-- BOX MESSAGGIO D'INVIO -->
     <div class="col-sm-4">
       <div class="box_user px-4 text-center">
-        <h2>Informazioni sull'annuncio</h2>
+        <h2>Informazioni sul proprietario</h2>
         <ul class="list-unstyled">
           <li v-if="apartmentSingle.user.name || apartmentSingle.user.surname">
-            <span><b>Nome del proprietario:</b></span><br>
+            <span><b>Nome:</b></span><br>
             <span>{{ apartmentSingle.user.name ?? '' }} {{ apartmentSingle.user.surname ?? '' }}</span>
           </li>
           <li class="mt-3">
@@ -241,7 +241,7 @@ import {store} from '../data/store';
           </div>
           
           <!-- ------------------------- -->
-          <div v-else>Email inviata correttamente</div>
+          <div class="badge py-3 px-5" v-else>Email inviata correttamente</div>
         </form>
         <!-- Il form si chiude qui -->
 
@@ -298,7 +298,7 @@ import {store} from '../data/store';
           <ul class="fa-ul">
             <li v-for="element in this.poiArray" :key="element.id" class="poi-list-item">
               <span class="fa-li"><i class="fa-solid fa-location-dot text-danger"></i></span>
-              <span>{{element.poi.name}} || {{parseInt(element.dist)}} km</span>
+              <span>{{element.poi.name}} || {{parseInt(element.dist)}} m</span>
             </li>
           </ul>
         </div>
@@ -345,7 +345,6 @@ import {store} from '../data/store';
   .box_card{
     width:100%;
     border-radius: 25px;
-    border: solid 1px gray;
     overflow: hidden;
     background-color: rgba(255, 255, 255, 0.5);
     box-shadow: 0 0 10px rgb(144, 144, 144);
@@ -372,7 +371,6 @@ import {store} from '../data/store';
     justify-content: space-evenly;
     color:black;
     text-shadow: 1px 1px rgba(197, 191, 191, 0.87);
-    border: solid 1px gray;
     box-shadow: 0 0 10px rgb(144, 144, 144);
     h2{
       letter-spacing: 0.5px;
@@ -438,7 +436,7 @@ import {store} from '../data/store';
     margin-bottom: 20px;
     min-height: 100px;
     border-radius: 25px;
-    border: solid 1px gray;
+    padding: 15px;
     background-color: lightgrey;
     width: 93%;
     margin: 0 auto;
@@ -483,5 +481,9 @@ import {store} from '../data/store';
     padding: 20px 0;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.7);
   }
+}
+.badge{
+  background: $background-button;
+  color: $background-secondry-body;
 }
 </style>

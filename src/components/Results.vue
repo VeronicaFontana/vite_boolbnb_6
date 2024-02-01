@@ -35,6 +35,9 @@ import Loader from './Loader.vue';
       <CardResult v-for="result in store.servicesApartments" :key="result.id" :result="result"/>
 
     </div> -->
+
+    <h4 class="pt-4 ps-4">Risultati ottenuti: {{ store.results.length }}</h4>
+    
     <section class="results-box" v-if="store.results.length > 0">
 
       <CardResult v-for="result in store.results" :key="result.id" :result="result"/>
@@ -67,6 +70,8 @@ import Loader from './Loader.vue';
     flex-wrap: wrap;
     justify-content: space-around;
     padding: 10px;
+    max-width: 1700px;
+    margin: 0 auto;
   }
 }
 h2{
