@@ -306,9 +306,9 @@ import {store} from '../data/store';
 
           <h3>Servizi:</h3>
 
-          <div class="col-9 d-flex align-items-center p-0">
-            <ul class="d-flex flex-wrap m-0 ">
-              <li class="list-unstyled px-3" v-for="service in apartmentSingle.services" :key="service"><i :class="service.icon"></i> {{ service.name }}</li>
+          <div class="d-flex align-items-center p-0">
+            <ul class="d-flex justify-content-center flex-wrap m-0 p-0">
+              <li class="list-unstyled d-flex flex-column p-2 border-black border-bottom" v-for="service in apartmentSingle.services" :key="service"><i :class="service.icon"></i> {{ service.name }}</li>
             </ul>
           </div>
         </div>
